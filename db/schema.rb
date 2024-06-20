@@ -10,9 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_20_170325) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_20_182945) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auditions", force: :cascade do |t|
+    t.string "status"
+    t.date "date"
+    t.bigint "casting_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["casting_id"], name: "index_auditions_on_casting_id"
+  end
+
+  create_table "castings", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "dancing_style"
+    t.date "deadline"
+    t.string "location"
+    t.bigint "producer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["producer_id"], name: "index_castings_on_producer_id"
+  end
+
+  create_table "dancer_auditions", force: :cascade do |t|
+    t.bigint "dancer_id", null: false
+    t.bigint "audition_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["audition_id"], name: "index_dancer_auditions_on_audition_id"
+    t.index ["dancer_id"], name: "index_dancer_auditions_on_dancer_id"
+  end
+
+  create_table "dancers", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.string "location"
+    t.text "bio"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_dancers_on_user_id"
+  end
+
+  create_table "producers", force: :cascade do |t|
+    t.string "name"
+    t.text "bio"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_producers_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +76,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_170325) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string "videofile"
+    t.bigint "audition_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["audition_id"], name: "index_videos_on_audition_id"
+  end
+
+  add_foreign_key "auditions", "castings"
+  add_foreign_key "castings", "producers"
+  add_foreign_key "dancer_auditions", "auditions"
+  add_foreign_key "dancer_auditions", "dancers"
+  add_foreign_key "dancers", "users"
+  add_foreign_key "producers", "users"
+  add_foreign_key "videos", "auditions"
 end
