@@ -1,20 +1,21 @@
 class DancersController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_dancer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
-  def index
-    @dancers = Dancer.all
+  def new
+    @dancer = current_user.build_dancer
+  end
+
+  def edit
+    @dancer = current_user.dancer
   end
 
   def show
-  end
-
-  def new
-    @dancer = current_user.dancers.build
+    @dancer = current_user.dancer
   end
 
   def create
-    @dancer = current_user.dancers.build(dancer_params)
+    @dancer = current_user.build_dancer(dancer_params)
     if @dancer.save
       redirect_to @dancer, notice: 'Dancer profile was successfully created.'
     else
@@ -22,12 +23,10 @@ class DancersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
+    @dancer = Dancer.find(params[:id])
     if @dancer.update(dancer_params)
-      redirect_to @dancer, notice: 'Dancer profile was successfully updated.'
+     redirect_to dancer_path(@dancer), notice: 'Dancer profile was successfully updated.'
     else
       render :edit
     end
@@ -48,7 +47,7 @@ class DancersController < ApplicationController
   def set_dancer
     @dancer = Dancer.find(params[:id])
   end
-
+  
   def dancer_params
     params.require(:dancer).permit(:name, :age, :location, :bio)
   end
