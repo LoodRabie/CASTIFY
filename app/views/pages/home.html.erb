@@ -1,4 +1,3 @@
-
 <head>
     <link rel="stylesheet" href="_home.scss">
 </head>
@@ -62,3 +61,12 @@
         </div>
     </div>
 </body>
+
+
+<% if current_user.role == "producer" %>
+  <%= link_to "Producer Profile", producer_path(current_user.producer) %>
+<% end %>
+
+<% if current_user.role == "dancer" %>
+  <%= link_to "Dancer Profile", dancer_path(current_user.dancer) %>
+<% end %>

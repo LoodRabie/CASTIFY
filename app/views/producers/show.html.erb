@@ -1,0 +1,13 @@
+<div class = "container">
+  <p><strong>Producer Name:</strong> <%= @producer.name %></p>
+  <p><strong>Producer Bio:</strong> <%= @producer.bio %></p>
+  <p><strong>Producer Email:</strong> <%= @current_user.email %></p>
+</div>
+
+<div class = "container">
+    <%= link_to "Update Profile", edit_producer_path(current_user.producer), class: "btn btn-primary" %>
+</div>
+<br>
+<div class = "container">
+    <%= link_to "Create New Casting", new_producer_casting_path(@producer), class: "btn btn-primary" %>
+</div>
