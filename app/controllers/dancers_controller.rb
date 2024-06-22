@@ -7,11 +7,9 @@ class DancersController < ApplicationController
   end
 
   def edit
-    @dancer = current_user.dancer
   end
 
   def show
-    @dancer = current_user.dancer
   end
 
   def create

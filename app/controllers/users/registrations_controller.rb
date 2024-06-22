@@ -69,7 +69,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-      root_path
+    root_path
   end
 
   def create_profile_for(user)
@@ -81,7 +81,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-      root_path
+    root_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.
