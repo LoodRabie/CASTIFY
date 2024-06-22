@@ -1,5 +1,67 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<head>
+    <link rel="stylesheet" href="_home.scss">
+</head>
+<body>
+    <div class="banner">
+        <div class="container">
+            <h1>Castify</h1>
+            <p>Find your next gig</p>
+            <a class="btn btn-flat" href="#">Apply now</a>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <div class="image-placeholder">
+            </div>
+            <h2>Show name</h2>
+            <div class="details">
+                <span>City Name</span>
+                <span>Style</span>
+            </div>
+            <p>This is a paragraph description where we’ll add a bunch of words that shouldn’t go beyond a few lines...</p>
+            <div class="due-date">Due date</div>
+        </div>
+        <div class="card">
+            <div class="image-placeholder">
+            </div>
+            <h2>Show name</h2>
+            <div class="details">
+                <span>City Name</span>
+                <span>Style</span>
+            </div>
+            <p>This is a paragraph description where we’ll add a bunch of words that shouldn’t go beyond a few lines...</p>
+            <div class="due-date">Due date</div>
+        </div>
+        <div class="card">
+            <div class="image-placeholder">
+            </div>
+            <h2>Show name</h2>
+            <div class="details">
+                <span>City Name</span>
+                <span>Style</span>
+            </div>
+            <p>This is a paragraph description where we’ll add a bunch of words that shouldn’t go beyond a few lines...</p>
+            <div class="due-date">Due date</div>
+        </div>
+        <div class="card">
+            <div class="image-placeholder">
+            </div>
+            <h2>Show name</h2>
+            <div class="details">
+                <span>City Name</span>
+                <span>Style</span>
+            </div>
+            <p>This is a paragraph description where we’ll add a bunch of words that shouldn’t go beyond a few lines...</p>
+            <div class="due-date">Due date</div>
+        </div>
+    </div>
+</body>
+
 
 <% if current_user.role == "producer" %>
   <%= link_to "Producer Profile", producer_path(current_user.producer) %>
