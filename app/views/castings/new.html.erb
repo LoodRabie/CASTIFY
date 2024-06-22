@@ -1,0 +1,8 @@
+<%= simple_form_for [@producer, @casting] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :dancing_style %>
+  <%= f.input :deadline %>
+  <%= f.input :location %>
+  <%= f.button :submit, 'Create Casting', class: 'btn btn-primary' %>
+<% end %>
