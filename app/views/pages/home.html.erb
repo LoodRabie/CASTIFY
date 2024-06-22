@@ -62,8 +62,6 @@
     </div>
 </body>
 
-
-
 <% if user_signed_in?%>
   <% if current_user.role == "producer" %>
     <%= link_to "Producer Profile", producer_path(current_user.producer) %>

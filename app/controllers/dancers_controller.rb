@@ -24,7 +24,7 @@ class DancersController < ApplicationController
   def update
     @dancer = Dancer.find(params[:id])
     if @dancer.update(dancer_params)
-     redirect_to dancer_path(@dancer), notice: 'Dancer profile was successfully updated.'
+      redirect_to dancer_path(@dancer), notice: 'Dancer profile was successfully updated.'
     else
       render :edit
     end
