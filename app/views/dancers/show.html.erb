@@ -1,0 +1,12 @@
+<div class = "container">
+  <p><strong>Dancer Name:</strong> <%= @dancer.name %></p>
+  <p><strong>Dancer Age:</strong> <%= @dancer.age %></p>
+  <p><strong>Dancer Location:</strong> <%= @dancer.locatio %></p>
+  <p><strong>Dancer Bio:</strong> <%= @dancer.bio %></p>
+</div>
+
+<div class = "container">
+  <% if current_user == @dancer %>
+    <%= link_to "Update Profile", edit_dancer_path(current_user.dancer) %>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+<%= simple_form_for @dancer do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :location %>
+  <%= f.input :bio %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <%= f.button :submit, 'Update Dancer Profile' %>
+<% end %>
+

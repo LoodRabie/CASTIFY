@@ -1,0 +1,7 @@
+<%= simple_form_for @producer do |f| %>
+  <%= f.input :name %>
+  <%= f.input :bio %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <%= f.button :submit, 'Update Producer Profile' %>
+<% end %>
