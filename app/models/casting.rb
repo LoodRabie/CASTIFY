@@ -1,4 +1,11 @@
 class Casting < ApplicationRecord
   belongs_to :producer
-  validates :title, :description, :dancing_style, :deadline, :location, presence: true
+
+  has_many :auditions, dependent: :destroy
+
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :dancing_style, presence: true
+  validates :deadline, presence: true
+  validates :location, presence: true
 end
