@@ -7,11 +7,9 @@ class DancersController < ApplicationController
   end
 
   def edit
-    @dancer = current_user.dancer
   end
 
   def show
-    @dancer = current_user.dancer
   end
 
   def create
@@ -47,7 +45,7 @@ class DancersController < ApplicationController
   def set_dancer
     @dancer = Dancer.find(params[:id])
   end
-  
+
   def dancer_params
     params.require(:dancer).permit(:name, :age, :location, :bio)
   end

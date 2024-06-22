@@ -1,31 +1,43 @@
 class CastingsController < ApplicationController
-  class CastingsController < ApplicationController
-    before_action :authenticate_user!
-    before_action :set_producer
+  before_action :authenticate_user!
+  before_action :set_producer
 
-    def new
-      @casting = @producer.castings.build
-      puts @producer.inspect
-      puts @casting.inspect
+  def new
+    @casting = @producer.castings.build
+  end
+
+  def create
+    @casting = @producer.castings.build(casting_params)
+    if @casting.save
+      redirect_to producer_casting_path(@producer, @casting), notice: 'Casting was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
     end
+  end
 
-    def create
-      @casting = @producer.castings.build(casting_params)
-      if @casting.save
-        redirect_to producer_casting_path(@producer, @casting), notice: 'Casting was successfully created.'
-      else
-        render :new
-      end
+  def update
+    @casting = Casting.find(params[:id])
+    if @casting.update(casting_params)
+      redirect_to producer_casting_path(@producer, @casting), notice: 'Casting was successfully updated.'
+    else
+      render :edit
     end
+  end
 
-    private
+  def edit
+  end
 
-    def set_producer
-      @producer = Producer.find(params[:producer_id])
-    end
+  def show
+    @casting = @producer.castings.find(params[:id])
+  end
 
-    def casting_params
-      params.require(:casting).permit(:title, :description, :dancing_style, :deadline, :location, :producer_id)
-    end
+  private
+
+  def set_producer
+    @producer = Producer.find(params[:producer_id])
+  end
+
+  def casting_params
+    params.require(:casting).permit(:title, :description, :dancing_style, :deadline, :location)
   end
 end
