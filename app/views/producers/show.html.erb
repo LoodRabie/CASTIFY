@@ -1,13 +1,17 @@
-<div class = "container">
+<div class="container">
   <p><strong>Producer Name:</strong> <%= @producer.name %></p>
   <p><strong>Producer Bio:</strong> <%= @producer.bio %></p>
-  <p><strong>Producer Email:</strong> <%= @current_user.email %></p>
+  <p><strong>Producer Email:</strong> <%= current_user.email %></p>
 </div>
 
-<div class = "container">
+<div class="container">
+  <% if current_user.id == @producer.user_id %>
     <%= link_to "Update Profile", edit_producer_path(current_user.producer), class: "btn btn-primary" %>
+  <% end %>
 </div>
 <br>
-<div class = "container">
+<div class="container">
+  <% if current_user.id == @producer.user_id %>
     <%= link_to "Create New Casting", new_producer_casting_path(@producer), class: "btn btn-primary" %>
+  <% end %>
 </div>
