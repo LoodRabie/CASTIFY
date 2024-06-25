@@ -3,23 +3,26 @@ class DancersController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @dancer = current_user.build_dancer
-  end
-
-  def edit
-  end
-
-  def show
+    @dancer = Dancer.new
   end
 
   def create
-    @dancer = current_user.build_dancer(dancer_params)
+    @dancer = Dancer.new(dancer_params)
+    @dancer.user = current_user  # Assuming each dancer is associated with a user
+
     if @dancer.save
       redirect_to @dancer, notice: 'Dancer profile was successfully created.'
     else
       render :new
     end
   end
+
+
+      def edit
+      end
+
+      def show
+      end
 
   def update
     @dancer = Dancer.find(params[:id])

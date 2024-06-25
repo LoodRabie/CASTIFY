@@ -1,16 +1,15 @@
 class ProducersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_producer, only: [:show, :edit, :update, :destroy]
 
   def new
     @producer = current_user.build_producer
   end
 
   def edit
-    @producer = current_user.producer
   end
 
   def show
-    @producer = current_user.producer
   end
 
   def update
@@ -29,6 +28,10 @@ class ProducersController < ApplicationController
   end
 
   private
+
+  def set_producer
+    @producer = Producer.find(params[:producer_id])
+  end
 
   def producer_params
     params.require(:producer).permit(:name, :bio)
