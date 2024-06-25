@@ -1,6 +1,7 @@
 class CastingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_producer
+  before_action :set_casting, only: [:show, :edit, :update, :destroy]
 
   def new
     @casting = @producer.castings.build
@@ -27,14 +28,26 @@ class CastingsController < ApplicationController
   def edit
   end
 
+  def index
+    @castings = @producer.castings
+  end
+
   def show
-    @casting = @producer.castings.find(params[:id])
+  end
+
+  def destroy
+    @casting.destroy
+    redirect_to producer_castings_path(@producer, @casting), notice: 'Casting was successfully destroyed.'
   end
 
   private
 
   def set_producer
     @producer = Producer.find(params[:producer_id])
+  end
+
+  def set_casting
+    @casting = @producer.castings.find(params[:id])
   end
 
   def casting_params
