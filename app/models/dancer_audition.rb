@@ -5,3 +5,4 @@ class DancerAudition < ApplicationRecord
   validates :dancer_id, presence: true
   validates :audition_id, presence: true
 end
+
