@@ -47,6 +47,6 @@ class DancersController < ApplicationController
   end
 
   def dancer_params
-    params.require(:dancer).permit(:name, :age, :location, :bio, :profile_picture)
+    params.require(:dancer).permit(:name, :age, :location, :bio)
   end
 end

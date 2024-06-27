@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   has_one :dancer
   has_one :producer
-  has_one_attached :profile_picture
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }, if: :password_required?
