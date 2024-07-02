@@ -1,40 +1,72 @@
-/* General container styling */
-.container {
-  padding: 20px;
-  margin-bottom: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+US+Modern:wght@100..400&display=swap');
 
-/* Specific styling for dancer info */
-.dancer-info p {
-  font-size: 16px;
-  margin: 5px 0;
-}
-
-/* Styling for the strong tags within dancer info */
-.dancer-info strong {
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
   color: #333;
 }
 
-/* Specific styling for update profile container */
-.update-profile {
-  text-align: right;
+/* Container Styling */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Style for the update profile button */
-.btn-primary {
-  display: inline-block;
-  padding: 10px 20px;
+/* Paragraph Styling */
+p {
   font-size: 16px;
-  color: #fff;
-  background-color: #007bff;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Strong Element Styling */
+strong {
+  font-weight: bold;
+  color: #444;
+}
+
+/* Button Styling */
+.btn-flat {
+  display: inline-block;
+  padding: 12px 25px;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #670BFF;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: #4D04C4;
+  transform: translateY(-2px);
+}
+
+/* Link Button Styling */
+a.btn-flat {
+  color: #ffffff;
   text-decoration: none;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+/* Line Break Styling (Optional) */
+br {
+  margin-bottom: 10px;
+}
+
+/* Head Link Styling (Not typically visible on page) */
+head link {
+  display: none;
 }

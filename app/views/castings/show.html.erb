@@ -6,59 +6,61 @@
   <p><strong>Location:</strong> <%= @casting.location %></p>
 </div>
 
+--Template
 
     <div class="container">
-        <div class="card">
-            <div class="title">Taylor Swift chorus dancers</div>
-            <div class="sub-title">
-                <span>📍 London</span> |
-                <span>Style: modern</span> |
-                <span>Status: Not yet applied</span>
-            </div>
-            <div class="details">
-                <strong>Apply by:</strong> 17 May 2024<br>
-                <strong>Show dates:</strong> 27 July - 18 August
-            </div>
-            <div class="requirements">
-                <p>5 background dancers needed for Taylor Swift's upcoming Era's Tour in London</p>
-                <p>2x male and 3x female dancers needed<br>
-                Height: 172cm and above</p>
-                <p><strong>Requirements:</strong></p>
-                <ul>
-                    <li>Application video for set choreography (2-3 minutes)</li>
-                    <li>Be available for rehearsal dates from 10-14 July in Central London</li>
-                </ul>
-            </div>
-            <div class="buttons">
-                <a href="#" class="button">Apply now</a>
-                <a href="#" class="button">Read more on how to apply</a>
-            </div>
+    <div class="card">
+        <div class="title"><%= @casting.title %></div>
+        <div class="sub-title">
+            <span>📍 <%= @casting.location %></span> |
+            <span>Style: <%= @casting.dancing_style %></span> |
+            <span>Status: Not yet applied</span>
         </div>
-        <div class="additional-info">
-            <div class="title">You may also be interested in...</div>
-            <div class="placeholder-card">
-                <div class="sub-title">Show name</div>
-                <div>City Name</div>
-                <div>Style</div>
-                <div class="status">Status</div>
-                <p>This is a paragraph description where we'll add a bunch of words that shouldn't go beyond a few lines...</p>
-                <div>Due date</div>
-            </div>
-            <div class="placeholder-card">
-                <div class="sub-title">Show name</div>
-                <div>City Name</div>
-                <div>Style</div>
-                <div class="status">Status</div>
-                <p>This is a paragraph description where we'll add a bunch of words that shouldn't go beyond a few lines...</p>
-                <div>Due date</div>
-            </div>
-            <div class="placeholder-card">
-                <div class="sub-title">Show name</div>
-                <div>City Name</div>
-                <div>Style</div>
-                <div class="status">Status</div>
-                <p>This is a paragraph description where we'll add a bunch of words that shouldn't go beyond a few lines...</p>
-                <div>Due date</div>
-            </div>
+        <div class="details">
+            <strong>Apply by:</strong> <%= @casting.deadline %><br>
+            <strong>Show dates:</strong> 27 July - 18 August
+        </div>
+        <div class="requirements">
+            <p><%= @casting.description %></p>
+            <p>2x male and 3x female dancers needed<br>
+            Height: 172cm and above</p>
+            <p><strong>Requirements:</strong></p>
+            <ul>
+                <li>Application video for set choreography (2-3 minutes)</li>
+                <li>Be available for rehearsal dates from 10-14 July in Central London</li>
+            </ul>
+        </div>
+        <div class="buttons">
+            <a href="#" class="button">Apply now</a>
+            <a href="#" class="button">Read more on how to apply</a>
         </div>
     </div>
+    <div class="additional-info">
+        <div class="title">You may also be interested in...</div>
+        <div class="placeholder-card">
+            <div class="sub-title">Show name</div>
+            <div>City Name</div>
+            <div>Style</div>
+            <div class="status">Status</div>
+            <p>This is a paragraph description where we'll add a bunch of words that shouldn't go beyond a few lines...</p>
+            <div>Due date</div>
+        </div>
+        <div class="placeholder-card">
+            <div class="sub-title">Show name</div>
+            <div>City Name</div>
+            <div>Style</div>
+            <div class="status">Status</div>
+            <p>This is a paragraph description where we'll add a bunch of words that shouldn't go beyond a few lines...</p>
+            <div>Due date</div>
+        </div>
+        <div class="placeholder-card">
+            <div class="sub-title">Show name</div>
+            <div>City Name</div>
+            <div>Style</div>
+            <div class="status">Status</div>
+            <p>This is a paragraph description where we'll add a bunch of words that shouldn't go beyond a few lines...</p>
+            <div>Due date</div>
+        </div>
+    </div>
+</div>
+
