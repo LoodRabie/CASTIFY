@@ -1,5 +1,9 @@
+<div class="d-flex">
+  <h1><strong>Casting Title:</strong> <%= @casting.title %></h1>
+</div>
+
 <div class="container">
-  <p><strong>Casting Title:</strong> <%= @casting.title %></p>
+  <%= cl_image_tag @casting.photo.key, height: 300, width: 400, crop: :fill if @casting.photo.attached? %>
   <p><strong>Casting Description:</strong> <%= @casting.description %></p>
   <p><strong>Casting Dancing Style:</strong> <%= @casting.dancing_style %></p>
   <p><strong>Deadline:</strong> <%= @casting.deadline %></p>

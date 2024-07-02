@@ -1,74 +1,69 @@
-<head>
-    <link rel="stylesheet" href="_home.scss">
-</head>
-<body>
-    <div class="banner">
-        <div class="container">
-            <h1>Castify</h1>
-            <p>Find your next gig</p>
-            <a class="btn btn-flat" href="#">Apply now</a>
-        </div>
-    </div>
+  <link rel="stylesheet" href="_home.scss">
 
-    <div class="search-bar">
-        <input type="text" placeholder="Search...">
-        <button>Search</button>
+  <div class="banner">
+    <div class="container">
+      <h1>Castify</h1>
+      <p>Find your next gig</p>
+      <a class="btn btn-flat" href="#">Apply now</a>
     </div>
-    <div class="cards">
-        <div class="card">
-            <div class="image-placeholder">
-            </div>
-            <h2>Show name</h2>
-            <div class="details">
-                <span>City Name</span>
-                <span>Style</span>
-            </div>
-            <p>This is a paragraph description where we’ll add a bunch of words that shouldn’t go beyond a few lines...</p>
-            <div class="due-date">Due date</div>
-        </div>
-        <div class="card">
-            <div class="image-placeholder">
-            </div>
-            <h2>Show name</h2>
-            <div class="details">
-                <span>City Name</span>
-                <span>Style</span>
-            </div>
-            <p>This is a paragraph description where we’ll add a bunch of words that shouldn’t go beyond a few lines...</p>
-            <div class="due-date">Due date</div>
-        </div>
-        <div class="card">
-            <div class="image-placeholder">
-            </div>
-            <h2>Show name</h2>
-            <div class="details">
-                <span>City Name</span>
-                <span>Style</span>
-            </div>
-            <p>This is a paragraph description where we’ll add a bunch of words that shouldn’t go beyond a few lines...</p>
-            <div class="due-date">Due date</div>
-        </div>
-        <div class="card">
-            <div class="image-placeholder">
-            </div>
-            <h2>Show name</h2>
-            <div class="details">
-                <span>City Name</span>
-                <span>Style</span>
-            </div>
-            <p>This is a paragraph description where we’ll add a bunch of words that shouldn’t go beyond a few lines...</p>
-            <div class="due-date">Due date</div>
-        </div>
-    </div>
-</body>
+  </div>
 
-<% if user_signed_in?%>
+  <div class="search-bar">
+    <input type="text" placeholder="Search...">
+    <button>Search</button>
+  </div>
+
+
+<% if current_user && current_user.producer %>
+  <div class="cards">
+    <% @dancers.each do |dancer| %>
+      <div class="card">
+        <%= link_to dancer_path(dancer) do %>
+          <div class="image-placeholder">
+            <% if dancer.profile_picture.attached? %>
+              <%= cl_image_tag dancer.profile_picture.key, class: 'card-image' %>
+            <% end %>
+          </div>
+          <h2><%= dancer.name %></h2>
+          <div class="details">
+            <span><%= dancer.dancing_styles %></span>
+          </div>
+          <p><%= dancer.bio %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% else current_user && current_user.dancer %>
+  <div class="cards">
+    <% @castings.each do |casting| %>
+      <div class="card">
+        <%= link_to casting_path(casting) do %>
+          <div class="image-placeholder">
+            <% if casting.photo.attached? %>
+              <%= cl_image_tag casting.photo.key, class: 'card-image' %>
+            <% end %>
+          </div>
+          <h2><%= casting.title %></h2>
+          <div class="details">
+            <span><%= casting.location %></span>
+            <span><%= casting.dancing_style %></span>
+          </div>
+          <p><%= casting.description %></p>
+          <div class="due-date"><%= casting.deadline %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+
+<% if user_signed_in? %>
   <% if current_user.role == "producer" %>
     <%= link_to "Producer Profile", producer_path(current_user.producer) %>
   <% elsif current_user.role == "dancer" %>
     <%= link_to "Dancer Profile", dancer_path(current_user.dancer) %>
   <% else %>
-  <%= link_to "Kindly confirm if you are a 'Dancer' or a 'Producer'", edit_user_registration_path(current_user) %>
+    <%= link_to "Kindly confirm if you are a 'Dancer' or a 'Producer'", edit_user_registration_path(current_user) %>
   <% end %>
 <% end %>
 

@@ -5,8 +5,10 @@ class Dancer < ApplicationRecord
   has_many :auditions, through: :dancer_auditions
   has_one_attached :profile_picture
 
+  include PgSearch::Model
+  multisearchable against: [:name, :age, :location, :dancing_styles, :bio ]
+
   validates :name, presence: true
   validates :age, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :location, presence: true
-  validates :bio, presence: true
+  validates :location, :bio, :dancing_styles, presence: true
 end
