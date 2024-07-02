@@ -5,8 +5,8 @@
   <p><strong>Dancer Bio:</strong> <%= @dancer.bio %></p>
 </div>
 
-<div class="container update-profile">
-  <% if current_user.id == @dancer.id %>
-    <%= link_to "Update Profile", edit_dancer_path(current_user.dancer), class: 'btn btn-primary' %>
+<div class = "container">
+  <% if current_user.id == @dancer.user_id %>
+    <%= link_to "Update Profile", edit_dancer_path(current_user.dancer) %>
   <% end %>
 </div>

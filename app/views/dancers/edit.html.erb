@@ -3,6 +3,7 @@
   <%= f.input :age %>
   <%= f.input :location %>
   <%= f.input :bio %>
+  <%= f.input :profile_picture, as: :file, label: 'Profile Picture' %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.button :submit, 'Update Dancer Profile', class: 'btn btn-primary' %>
   <a class="btn btn-primary" href="#">Back</a>
