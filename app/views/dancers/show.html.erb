@@ -1,11 +1,12 @@
-<div class = "container">
+<div class="container dancer-info">
   <p><strong>Dancer Name:</strong> <%= @dancer.name %></p>
   <p><strong>Dancer Age:</strong> <%= @dancer.age %></p>
   <p><strong>Dancer Location:</strong> <%= @dancer.location %></p>
   <p><strong>Dancer Bio:</strong> <%= @dancer.bio %></p>
 </div>
 
-<div class = "container">
-  <% if current_user.user_id == @dancer.user_id %>
-    <%= link_to "Update Profile", edit_dancer_path(current_user.dancer) %>
+<div class="container update-profile">
+  <% if current_user.id == @dancer.id %>
+    <%= link_to "Update Profile", edit_dancer_path(current_user.dancer), class: 'btn btn-primary' %>
+  <% end %>
 </div>
