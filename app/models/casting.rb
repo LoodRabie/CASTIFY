@@ -1,7 +1,11 @@
 class Casting < ApplicationRecord
   belongs_to :producer
+  has_one_attached :photo
 
   has_many :auditions, dependent: :destroy
+
+  include PgSearch::Model
+  multisearchable against: [ :title, :description, :dancing_style, :location, :deadline ]
 
   validates :title, presence: true
   validates :description, presence: true
