@@ -1,9 +1,11 @@
 require 'open-uri'
+require 'faker'
 
 # Clear existing data
 Dancer.destroy_all
 Producer.destroy_all
 User.destroy_all
+Casting.destroy_all
 
 # Create users
 user1 = User.create!(email: "quentin.tarantino@example.com", password: "password", role: "producer")
@@ -99,4 +101,58 @@ dancer5 = Dancer.create!(
 )
 dancer5.profile_picture.attach(io: URI.open('https://randomuser.me/api/portraits/women/5.jpg'), filename: 'martha.jpg')
 
+# Create castings with specific details
+casting1 = Casting.create!(
+  title: "Broadway Musical Extravaganza",
+  description: "Seeking talented dancers for an upcoming Broadway musical. All styles welcome!",
+  dancing_style: "Musical Theatre",
+  deadline: Date.today + 30.days,
+  location: "New York, NY",
+  producer: producer1
+)
+casting1.photo.attach(io: URI.open('https://randomuser.me/api/portraits/men/1.jpg'), filename: 'broadway.jpg')
+
+casting2 = Casting.create!(
+  title: "Contemporary Dance Performance",
+  description: "Looking for contemporary dancers for a modern dance piece exploring themes of nature and technology.",
+  dancing_style: "Contemporary",
+  deadline: Date.today + 45.days,
+  location: "Los Angeles, CA",
+  producer: producer2
+)
+casting2.photo.attach(io: URI.open('https://randomuser.me/api/portraits/women/1.jpg'), filename: 'contemporary.jpg')
+
+casting3 = Casting.create!(
+  title: "Hip Hop Music Video",
+  description: "Casting energetic hip hop dancers for an upcoming music video shoot.",
+  dancing_style: "Hip Hop",
+  deadline: Date.today + 15.days,
+  location: "Atlanta, GA",
+  producer: producer3
+)
+casting3.photo.attach(io: URI.open('https://randomuser.me/api/portraits/men/2.jpg'), filename: 'hiphop.jpg')
+
+casting4 = Casting.create!(
+  title: "Ballet Company Auditions",
+  description: "Prestigious ballet company seeking new members for the upcoming season.",
+  dancing_style: "Ballet",
+  deadline: Date.today + 60.days,
+  location: "Chicago, IL",
+  producer: producer4
+)
+casting4.photo.attach(io: URI.open('https://randomuser.me/api/portraits/women/2.jpg'), filename: 'ballet.jpg')
+
+casting5 = Casting.create!(
+  title: "Salsa Dance Competition",
+  description: "Calling all salsa dancers! Join our exciting dance competition and showcase your skills.",
+  dancing_style: "Salsa",
+  deadline: Date.today + 20.days,
+  location: "Miami, FL",
+  producer: producer5
+)
+casting5.photo.attach(io: URI.open('https://randomuser.me/api/portraits/men/3.jpg'), filename: 'salsa.jpg')
+
+puts "#{Dancer.count} dancers created"
+puts "#{Producer.count} producers created"
+puts "#{Casting.count} castings created"
 puts "Seed data created successfully!"
