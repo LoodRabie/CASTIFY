@@ -11,12 +11,12 @@ Rails.application.routes.draw do
   end
 
   resources :producers, only: [:show, :edit, :update, :index] do
-    resources :castings do
+    resources :castings, only: [:new, :create] do
       resources :auditions, only: [:new, :create, :show, :edit, :update, :destroy]
     end
   end
 
-  resources :castings, only: [:index, :show] do
+  resources :castings, only: [:index, :show, :edit, :update, :destroy] do
     resources :auditions, only: [:index, :show]
   end
 

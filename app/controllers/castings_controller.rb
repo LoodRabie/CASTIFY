@@ -1,16 +1,22 @@
 class CastingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_producer
+  before_action :set_producer, only: [:index]
   before_action :set_casting, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @castings = Casting.all.includes(:producer)
+  end
+
   def new
-    @casting = @producer.castings.build
+    @producer = current_user.producer
+    @casting = Casting.new
   end
 
   def create
-    @casting = @producer.castings.build(casting_params)
+    @casting = Casting.new(casting_params)
+    @casting.producer = current_user.producer
     if @casting.save
-      redirect_to producer_casting_path(@producer, @casting), notice: 'Casting was successfully created.'
+      redirect_to casting_path(@casting), notice: 'Casting was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -19,7 +25,7 @@ class CastingsController < ApplicationController
   def update
     @casting = Casting.find(params[:id])
     if @casting.update(casting_params)
-      redirect_to producer_casting_path(@producer, @casting), notice: 'Casting was successfully updated.'
+      redirect_to casting_path(@casting), notice: 'Casting was successfully updated.'
     else
       render :edit
     end
@@ -33,11 +39,12 @@ class CastingsController < ApplicationController
   end
 
   def show
+    @producer = current_user.producer
   end
 
   def destroy
     @casting.destroy
-    redirect_to producer_castings_path(@producer, @casting), notice: 'Casting was successfully destroyed.'
+    redirect_to root_path, notice: 'Casting was successfully destroyed.'
   end
 
   private
@@ -47,10 +54,10 @@ class CastingsController < ApplicationController
   end
 
   def set_casting
-    @casting = @producer.castings.find(params[:id])
+    @casting = Casting.find(params[:id])
   end
 
   def casting_params
-    params.require(:casting).permit(:title, :description, :dancing_style, :deadline, :location)
+    params.require(:casting).permit(:title, :description, :dancing_style, :deadline, :location, :photo)
   end
 end

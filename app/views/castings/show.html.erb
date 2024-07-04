@@ -1,7 +1,14 @@
+<div class="d-flex">
+  <h1><strong>Casting Title:</strong> <%= @casting.title %></h1>
+</div>
+
 <div class="container">
-  <p><strong>Casting Title:</strong> <%= @casting.title %></p>
+  <%= cl_image_tag @casting.photo.key, height: 300, width: 400, crop: :fill if @casting.photo.attached? %>
   <p><strong>Casting Description:</strong> <%= @casting.description %></p>
   <p><strong>Casting Dancing Style:</strong> <%= @casting.dancing_style %></p>
   <p><strong>Deadline:</strong> <%= @casting.deadline %></p>
   <p><strong>Location:</strong> <%= @casting.location %></p>
 </div>
+
+  <%= link_to 'Edit Casting', edit_casting_path(@casting), class: 'btn btn-primary' %>
+  <%= link_to 'Delete Casting', casting_path(@casting), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
