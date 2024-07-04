@@ -3,7 +3,6 @@ class Dancer < ApplicationRecord
 
   has_many :dancer_auditions, dependent: :destroy
   has_many :auditions, through: :dancer_auditions
-  has_one_attached :profile_picture
 
   include PgSearch::Model
   multisearchable against: [:name, :age, :location, :dancing_styles, :bio ]
