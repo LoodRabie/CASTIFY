@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resources :dancers, only: [:show, :edit, :update, :index] do
+  resources :dancers, only: [:new, :create, :show, :edit, :update, :index] do
     resources :auditions, only: [:index]
   end
 
-  resources :producers, only: [:show, :edit, :update, :index] do
+  resources :producers, only: [:new, :create, :show, :edit, :update, :index] do
     resources :castings, only: [:new, :create] do
       resources :auditions, only: [:new, :create, :show, :edit, :update, :destroy]
     end
