@@ -10,5 +10,5 @@ class Dancer < ApplicationRecord
 
   validates :name, presence: true
   validates :age, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :location, :bio, :dancing_styles, presence: true
+  validates :location, :bio, presence: true
 end
