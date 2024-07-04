@@ -1,25 +1,29 @@
+<head>
+  <link rel="stylesheet" href="_show.scss">
+</head>
+<body>
     <div class="container">
-        <section class="main-content">
+       <section class="main-content">
             <div class="job-details">
                 <h2><%= @casting.title %></h2>
                 <div class="job-description">
                     <div class="job-image">
-                         <%= cl_image_tag @casting.photo.key, height: 300, width: 400, crop: :fill if @casting.photo.attached? %>
+                        <%= cl_image_tag @casting.photo.key, height: 300, width: 400, crop: :fill if @casting.photo.attached? %>
                     </div>
-                    </div>
-                    <div>
+                    <div class="description">
                         <h3>Description</h3>
                         <p><%= @casting.description %></p>
                         <div class="info-tags">
                             <span class="tag"><%= @casting.dancing_style %></span>
                         </div>
-                    </div>
-                </div>
-                <div class="apply-details">
+                        <div class="apply-details">
                     <span class="tag"><%= @casting.deadline %></span>
                     <span class="tag"><%= @casting.location %></span>
                     <button>Apply now</button>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </section>
         <section class="interested">
@@ -49,3 +53,4 @@
             </div>
         </section>
     </div>
+</body>

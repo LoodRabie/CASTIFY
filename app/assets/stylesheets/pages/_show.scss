@@ -1,9 +1,32 @@
+/* Reset and basic styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f5f5;
+  line-height: 1.6;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 20px;
 }
 
+/* Main content section */
 .main-content {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.job-details {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -11,21 +34,31 @@
 
 .job-image {
   max-width: 100%;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .job-image img {
-  width: 50%;
-  height: auto; /* Ensures the image maintains its aspect ratio */
-  object-fit: cover; /* Ensures the image covers the entire container */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .job-description {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .info-tags, .requirements, .apply-details {
+      margin-top: 10px;
+    }
+  }
 }
 
 .apply-details {
@@ -34,66 +67,66 @@
 }
 
 .apply-details .tag {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #0b0bff;
+  color: #ffffff;
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 0.9rem;
 }
 
 .job-description h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 10px;
+  color: #333;
 }
 
 .job-description h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 10px;
+  color: #0b0bff;
 }
 
 .job-description p {
   line-height: 1.8;
   margin-bottom: 15px;
+  color: #555;
 }
 
 .info-tags .tag {
-  background-color: #28a745;
-  color: #fff;
-  padding: 3px 8px;
-  border-radius: 3px;
+  background-color: #670BFF;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 10px;
   font-size: 0.8rem;
 }
 
-.job-requirements button {
-  background-color: #28a745;
-  color: #fff;
+.apply-details button {
+  background-color: #670BFF;
+  color: #ffffff;
   border: none;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.job-requirements button:hover {
-  background-color: #218838;
+.apply-details button:hover {
+  background-color: #4D04C4;
 }
 
+/* Interested section */
 .interested {
-  margin-top: 50px;
-  .cards {
-      display: flex;
-      justify-content: space-between;
-      .card {
-          flex: 1;
-          margin: 0 10px;
-          padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
   margin-top: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .interested h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 15px;
+  color: #333;
 }
 
 .cards {
@@ -103,23 +136,40 @@
 }
 
 .card {
-  background-color: #fff;
-  padding: 15px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  border-radius: 5px;
-  transition: transform 0.3s ease;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .card h4 {
   margin-top: 0;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  color: #670BFF;
 }
 
 .card p {
   margin-bottom: 10px;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.card:hover {
+  background-color: #dbc0f7;
+  color: #a35dd4;
+}
+
+.apply-details button {
+  background-color: #670BFF;
+  color: #ffffff;
+}
+
+.apply-details button:hover {
+  background-color: #4D04C4;
 }
