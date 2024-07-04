@@ -59,11 +59,15 @@
 
 <% if user_signed_in? %>
   <% if current_user.role == "producer" %>
-    <%= link_to "Producer Profile", producer_path(current_user.producer) %>
+    <% if current_user.producer %>
+      <%= link_to "Producer Profile", producer_path(current_user.producer) %>
+    <% end %>
   <% end %>
 
   <% if current_user.role == "dancer" %>
-    <%= link_to "Dancer Profile", dancer_path(current_user.dancer) %>
+    <% if current_user.dancer %>
+      <%= link_to "Dancer Profile", dancer_path(current_user.dancer) %>
+    <% end %>
   <% else %>
     <%= link_to "Kindly confirm if you are a 'Dancer' or a 'Producer'", edit_user_registration_path(current_user) %>
   <% end %>
