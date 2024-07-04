@@ -1,8 +1,12 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
-  def home
-    @castings = Casting.all
-    @dancers = Dancer.all
-  end
+    def home
+      @dancers = Dancer.all
+      @castings = Casting.all
+      if params[:query].present?
+        @dancers = @dancers.where("name ILIKE ?", "%#{params[:query]}%")
+        @castings = @castings.where("name ILIKE ?", "%#{params[:query]}%")
+      end
+    end
 end

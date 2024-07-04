@@ -1,5 +1,3 @@
-  <link rel="stylesheet" href="_home.scss">
-
   <div class="banner">
     <div class="container">
       <h1>Castify</h1>
@@ -8,11 +6,17 @@
     </div>
   </div>
 
-  <div class="search-bar">
+<!--  <div class="search-bar">
     <input type="text" placeholder="Search...">
     <button>Search</button>
-  </div>
+  </div>-->
 
+  <div class="search-bar">
+    <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search..." %>
+      <%= submit_tag "Search", name: "", class: "btn btn-flat" %>
+    <% end %>
+  </div>
 
 <% if current_user && current_user.producer %>
   <div class="cards">
