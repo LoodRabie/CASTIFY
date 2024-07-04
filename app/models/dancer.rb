@@ -3,6 +3,7 @@ class Dancer < ApplicationRecord
 
   has_many :dancer_auditions, dependent: :destroy
   has_many :auditions, through: :dancer_auditions
+  has_one_attached :photo
 
   include PgSearch::Model
   pg_search_scope :search_by_name,
