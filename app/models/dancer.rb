@@ -6,8 +6,8 @@ class Dancer < ApplicationRecord
   has_one_attached :profile_picture
 
   include PgSearch::Model
-  pg_search_scope :search_by_name,
-    against: [ :name ],
+  pg_search_scope :search_by_name_and_age_and_location_and_bio_and_dancing_styles,
+    against: [ :name, :age, :location, :bio, :dancing_styles ],
     using: {
       tsearch: { prefix: true }
     }
