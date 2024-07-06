@@ -3,6 +3,7 @@
 </head>
 <body>
 <div class="container">
+  <%= cl_image_tag @producerer.profile_picture.key, height: 300, width: 400, crop: :fill if @producer.profile_picture.attached? %>
   <p><strong>Producer Name:</strong> <%= @producer.name %></p>
   <p><strong>Producer Bio:</strong> <%= @producer.bio %></p>
   <p><strong>Producer Email:</strong> <%= current_user.email %></p>
