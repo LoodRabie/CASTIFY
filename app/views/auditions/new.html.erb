@@ -1,0 +1,40 @@
+<h1>Apply for <%= @casting.title %> </h1>
+<div class = "container">
+  <%= simple_form_for [@producer, @casting] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :dancing_style %>
+    <%= f.input :deadline %>
+    <%= f.input :location %>
+    <%= f.input :photo, as: :file %>
+    <%= f.button :submit, 'Create Casting', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+<%= simple_form_for [@casting, @audition] do |f| %>
+    <%= f.hidden_field :title, value: @casting.title %>
+    <%= f.hidden_field :description, value: @casting.description %>
+    <%= f.hidden_field :dancing_style, value: @casting.title %>
+    <%= f.hidden_field :deadline, value: @casting.deadline %>
+    <%= f.input :location %>
+    <%= f.input :description %>
+    <%= f.input :dancing_style %>
+    <%= f.input :deadline %>
+    <%= f.input :location %>
+    <%= f.input :photo, as: :file %>
+    <%= f.button :submit, 'Create Casting', class: 'btn btn-primary' %>
+  <% end %>
+
+<%= f.hidden_field :user_id, value: current_user.id %>
+
+create_table "castings", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "dancing_style"
+    t.date "deadline"
+    t.string "location"
+    t.bigint "producer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["producer_id"], name: "index_castings_on_producer_id"
+  end
