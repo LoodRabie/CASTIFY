@@ -3,6 +3,7 @@ class Casting < ApplicationRecord
   has_one_attached :photo
 
   has_many :auditions, dependent: :destroy
+  has_one_attached :video
 
   include PgSearch::Model
   multisearchable against: [ :title, :description, :dancing_style, :location, :deadline ]

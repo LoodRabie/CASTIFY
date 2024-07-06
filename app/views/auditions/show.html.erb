@@ -1,0 +1,13 @@
+<div class="container">
+  <p><strong>Audition Status:</strong> <%= @audition.status %></p>
+  <p><strong>Audition Date:</strong> <%= @audition.date %></p>
+
+  <h3>Submitted Videos</h3>
+  <% @audition.videos.each do |video| %>
+    <%= video_tag video, controls: true %>
+  <% end %>
+
+  <% if current_user.producer? %>
+    <%= link_to 'Edit Audition', edit_audition_path(@audition) %>
+  <% end %>
+</div>
