@@ -1,5 +1,4 @@
 require 'open-uri'
-require 'faker'
 
 # Clear existing data
 Dancer.destroy_all
