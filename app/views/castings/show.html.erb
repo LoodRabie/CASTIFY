@@ -1,14 +1,56 @@
-<div class="d-flex">
-  <h1><strong>Casting Title:</strong> <%= @casting.title %></h1>
-</div>
+<head>
+  <link rel="stylesheet" href="_show.scss">
+</head>
+<body>
+    <div class="container">
+       <section class="main-content">
+            <div class="job-details">
+                <h2><%= @casting.title %></h2>
+                <div class="job-description">
+                    <div class="job-image">
+                        <%= cl_image_tag @casting.photo.key, height: 300, width: 400, crop: :fill if @casting.photo.attached? %>
+                    </div>
+                    <div class="description">
+                        <h3>Description</h3>
+                        <p><%= @casting.description %></p>
+                        <div class="info-tags">
+                            <span class="tag"><%= @casting.dancing_style %></span>
+                        </div>
+                        <div class="apply-details">
+                    <span class="tag"><%= @casting.deadline %></span>
+                    <span class="tag"><%= @casting.location %></span>
+                    <button>Apply now</button>
+                        </div>
+                    </div>
+                </div>
 
-<div class="container">
-  <%= cl_image_tag @casting.photo.key, height: 300, width: 400, crop: :fill if @casting.photo.attached? %>
-  <p><strong>Casting Description:</strong> <%= @casting.description %></p>
-  <p><strong>Casting Dancing Style:</strong> <%= @casting.dancing_style %></p>
-  <p><strong>Deadline:</strong> <%= @casting.deadline %></p>
-  <p><strong>Location:</strong> <%= @casting.location %></p>
-</div>
-
-  <%= link_to 'Edit Casting', edit_casting_path(@casting), class: 'btn btn-primary' %>
-  <%= link_to 'Delete Casting', casting_path(@casting), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            </div>
+        </section>
+        <section class="interested">
+            <h3>You may also be interested in...</h3>
+            <div class="cards">
+                <div class="card">
+                    <h4>Show name</h4>
+                    <p>City Name</p>
+                    <p>Style</p>
+                    <p>This is a paragraph description where we'll add a bunch of words that shouldn't go beyond a few lines...</p>
+                    <p>Due date</p>
+                </div>
+                <div class="card">
+                    <h4>Show name</h4>
+                    <p>City Name</p>
+                    <p>Style</p>
+                    <p>This is a paragraph description where we'll add a bunch of words that shouldn't go beyond a few lines...</p>
+                    <p>Due date</p>
+                </div>
+                <div class="card">
+                    <h4>Show name</h4>
+                    <p>City Name</p>
+                    <p>Style</p>
+                    <p>This is a paragraph description where we'll add a bunch of words that shouldn't go beyond a few lines...</p>
+                    <p>Due date</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
