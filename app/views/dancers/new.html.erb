@@ -6,6 +6,5 @@
   <%= f.input :dancing_styles %>
   <%= f.input :profile_picture, as: :file, label: 'Profile Picture' %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-
   <%= f.button :submit, 'Create Dancer Profile' %>
 <% end %>
