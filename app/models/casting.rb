@@ -3,6 +3,7 @@ class Casting < ApplicationRecord
   has_one_attached :photo
 
   has_many :auditions, dependent: :destroy
+  has_one_attached :video
 
   include PgSearch::Model
   pg_search_scope :search_by_title_and_description_and_dancing_styles_and_location_and_deadline,

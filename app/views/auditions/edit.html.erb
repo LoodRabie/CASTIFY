@@ -1,0 +1,9 @@
+<%= simple_form_for [@casting, @audition] do |f| %>
+  <div class="field">
+    <%= f.input :status, collection: Audition::STATUSES, prompt: "Select Status" %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, "Update Audition" %>
+  </div>
+<% end %>

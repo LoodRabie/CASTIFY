@@ -1,6 +1,6 @@
 class AuditionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_casting, only: [:new, :create, :index]
+  before_action :set_casting, only: [:new, :create]
   before_action :set_audition, only: [:show]
 
   # GET /castings/:casting_id/auditions/new
@@ -14,11 +14,12 @@ class AuditionsController < ApplicationController
 
   # POST /castings/:casting_id/auditions
   def create
-    @audition = current_user.dancer.auditions.build(audition_params)
-    @audition.casting = @casting
-
+    @audition = @casting.auditions.build(audition_params)
+    @audition.status = 'pending'
+    @audition.date = Date.today
     if @audition.save
-      redirect_to root_path, notice: 'Audition was successfully created.'
+      DancerAudition.create(dancer: current_user.dancer, audition: @audition)
+      redirect_to audition_path(@audition), notice: 'Audition submitted successfully.'
     else
       render :new
     end
@@ -26,12 +27,35 @@ class AuditionsController < ApplicationController
 
   # GET /castings/:casting_id/auditions
   def index
-    @auditions = @casting.auditions
+    if current_user.producer?
+      @auditions = @casting.auditions
+    elsif current_user.dancer?
+      @dancer = Dancer.find(params[:dancer_id])
+      @auditions = current_user.dancer.auditions
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /auditions/:id
   def show
-    redirect_to root_path, alert: 'Access denied.' unless current_user.producer
+    @dancer_audition = DancerAudition.find_by(audition: @audition)
+  end
+
+  def edit
+    redirect_to root_path unless current_user.producer?
+  end
+
+  def update
+    if current_user.producer?
+      if @audition.update(audition_params)
+        redirect_to audition_path(@audition), notice: 'Audition updated successfully.'
+      else
+        render :edit
+      end
+    else
+      redirect_to root_path
+    end
   end
 
   private
@@ -45,6 +69,6 @@ class AuditionsController < ApplicationController
   end
 
   def audition_params
-    params.require(:audition).permit(:status, :date)
+    params.require(:audition).permit(:status, :date, :casting_id, :video)
   end
 end
