@@ -1,6 +1,6 @@
 class AuditionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_casting, only: [:new, :create, :index]
+  before_action :set_casting, only: [:new, :create]
   before_action :set_audition, only: [:show]
 
   # GET /castings/:casting_id/auditions/new
@@ -30,6 +30,7 @@ class AuditionsController < ApplicationController
     if current_user.producer?
       @auditions = @casting.auditions
     elsif current_user.dancer?
+      @dancer = Dancer.find(params[:dancer_id])
       @auditions = current_user.dancer.auditions
     else
       redirect_to root_path
@@ -68,6 +69,6 @@ class AuditionsController < ApplicationController
   end
 
   def audition_params
-    params.require(:audition).permit(:status, :date, videos: [])
+    params.require(:audition).permit(:status, :date, :casting_id, :video)
   end
 end

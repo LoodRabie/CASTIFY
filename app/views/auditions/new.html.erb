@@ -5,11 +5,11 @@
 
   <% if @casting.video.attached? %>
     <h3>Instructional Video</h3>
-    <%= video_tag url_for(@casting.video), controls: true %>
+    <%= video_tag url_for(@casting.video), height: 300, width: 400, controls: true %>
   <% end %>
 
   <div class="field">
-    <%= f.input :videos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :video, as: :file %>
   </div>
 
   <div class="actions">
