@@ -1,5 +1,4 @@
 require 'open-uri'
-require 'faker'
 
 # Clear existing data
 Dancer.destroy_all
@@ -7,7 +6,7 @@ Producer.destroy_all
 User.destroy_all
 Casting.destroy_all
 
-# Create users
+# Create realistic fake users
 user1 = User.create!(email: "quentin.tarantino@example.com", password: "password", role: "producer")
 user2 = User.create!(email: "sofia.coppola@example.com", password: "password", role: "producer")
 user3 = User.create!(email: "martin.scorsese@example.com", password: "password", role: "producer")
