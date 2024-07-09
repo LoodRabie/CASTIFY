@@ -8,7 +8,6 @@
   <p><strong>Producer Email:</strong> <%= current_user.email %></p>
 </div>
 
-<div class="container">
   <% if current_user.id == @producer.user_id %>
     <%= link_to "Update Profile", edit_producer_path(current_user.producer), class: "btn btn-flat" %>
   <% end %>
