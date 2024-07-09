@@ -9,10 +9,8 @@
         <%= link_to "Update Profile", edit_producer_path(current_user.producer), class: "btn btn-flat" %>
       <% end %>
 
-      <br>
-
       <% if current_user.id == @producer.user_id %>
-        <%= link_to "Create New Casting", new_producer_casting_path(@producer), class: "btn btn-flat", style: "margin-top: 10px;" %>
+        <%= link_to "Create New Casting", new_producer_casting_path(@producer), class: "btn btn-flat" %>
       <% end %>
       </div>
    </div>
