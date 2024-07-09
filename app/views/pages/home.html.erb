@@ -16,12 +16,12 @@
       <button>Search</button>
     </div>-->
 
-    <div class="search-bar">
-      <%= form_with url: root_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search..." %>
-        <%= submit_tag "Search", name: "", class: "btn btn-flat" %>
-      <% end %>
-    </div>
+  <div class="search-bar">
+    <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search..." %>
+      <%= submit_tag "Search", class: "btn btn-flat" %>
+    <% end %>
+  </div>
 
     <% if current_user && current_user.producer %>
       <div class="cards">
@@ -74,6 +74,16 @@
         <% end %>
       <% end %>
 
+  <% if current_user.role == "dancer" %>
+    <% if current_user.dancer %>
+      <%= link_to "Dancer Profile", dancer_path(current_user.dancer) %>
+    <% else %>
+      <%= link_to "Create Dancer Profile", new_dancer_path %>
+    <% end %>
+  <% else %>
+    <%= link_to "Kindly confirm if you are a 'Dancer' or a 'Producer'", edit_user_registration_path(current_user) %>
+  <% end %>
+<% end %>
       <% if current_user.role == "dancer" %>
         <% if current_user.dancer %>
           <%= link_to "Dancer Profile", dancer_path(current_user.dancer) %>
