@@ -16,6 +16,7 @@ class AuditionsController < ApplicationController
   def create
     @audition = @casting.auditions.build(audition_params)
     @audition.status = 'pending'
+    @audition.dancer = current_user.dancer
     @audition.date = Date.today
     if @audition.save
       DancerAudition.create(dancer: current_user.dancer, audition: @audition)
