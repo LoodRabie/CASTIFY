@@ -34,10 +34,6 @@ class CastingsController < ApplicationController
   def edit
   end
 
-  def index
-    @castings = @producer.castings
-  end
-
   def show
     @producer = current_user.producer
   end
@@ -58,6 +54,6 @@ class CastingsController < ApplicationController
   end
 
   def casting_params
-    params.require(:casting).permit(:title, :description, :dancing_style, :deadline, :location, :photo)
+    params.require(:casting).permit(:title, :description, :dancing_style, :deadline, :location, :photo, :video)
   end
 end

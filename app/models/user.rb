@@ -9,4 +9,12 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }, if: :password_required?
+
+  def producer?
+    role == 'producer'
+  end
+
+  def dancer?
+    role == 'dancer'
+  end
 end

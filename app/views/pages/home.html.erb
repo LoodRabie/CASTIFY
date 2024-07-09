@@ -7,7 +7,7 @@
       <div class="container">
         <h1>Castify</h1>
         <p>Find your next gig</p>
-        <a class="btn btn-flat" href="#">Apply now</a>
+        <a class="btn btn-home" href="#">Apply now</a>
       </div>
     </div>
 
@@ -16,12 +16,12 @@
       <button>Search</button>
     </div>-->
 
-    <div class="search-bar">
-      <%= form_with url: root_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search..." %>
-        <%= submit_tag "Search", name: "", class: "btn btn-flat" %>
-      <% end %>
-    </div>
+  <div class="search-bar">
+    <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search..." %>
+      <%= submit_tag "Search", class: "btn btn-flat" %>
+    <% end %>
+  </div>
 
     <% if current_user && current_user.producer %>
       <div class="cards">
