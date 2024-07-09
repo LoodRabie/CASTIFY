@@ -9,7 +9,8 @@
 
 // Your CSS partials
 @import "components/index";
-@import "pages/index";
-@import "pages/show";
-@import "pages/home";
-@import "producer/show";
+@import "pages/home/index";
+@import "pages/castings/show";
+@import "pages/home/home";
+@import "pages/producer/show.scss";
+@import "pages/dancer/show"
