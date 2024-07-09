@@ -14,7 +14,7 @@
       <% end %>
 
       <% if current_user.id == @producer.user_id %>
-        <%= link_to "Create New Casting", new_producer_casting_path(@producer), class: "btn btn-flat" %>
+        <%= link_to "Create New Casting", new_producer_casting_path(@producer), class: "btn btn-flat",  style:"margin-top: 10px"%>
       <% end %>
       </div>
    </div>
