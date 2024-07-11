@@ -4,20 +4,19 @@ Rails.application.routes.draw do
   }
 
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :dancers, only: [:new, :create, :show, :edit, :update, :index] do
     resources :auditions, only: [:index]
   end
 
   resources :producers, only: [:new, :create, :show, :edit, :update, :index] do
-    resources :castings, only: [:new, :create] do
-      resources :auditions, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :castings, only: [:new, :create, :show, :edit, :update, :index] do
+      resources :auditions
     end
   end
 
   resources :castings, only: [:index, :show, :edit, :update, :destroy] do
-    resources :auditions, only: [:index, :show]
+    resources :auditions
   end
 
   resources :auditions, only: [:index, :show] do
@@ -26,11 +25,6 @@ Rails.application.routes.draw do
   end
 
   get 'my_auditions', to: 'dancers#my_auditions', as: 'my_auditions'
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end

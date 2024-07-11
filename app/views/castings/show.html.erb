@@ -19,7 +19,7 @@
                         <div class="apply-details">
                     <span class="tag"><%= @casting.deadline %></span>
                     <span class="tag"><%= @casting.location %></span>
-                    <button>Apply now</button>
+                    <%= link_to "Apply now", new_producer_casting_audition_path(@casting.producer, @casting), class: "button" %>
                         </div>
                     </div>
                 </div>

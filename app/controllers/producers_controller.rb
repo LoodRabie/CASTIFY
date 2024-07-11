@@ -11,6 +11,8 @@ class ProducersController < ApplicationController
 
   def show
     @producer = current_user.producer
+    @casting = Casting.find(params[:id])
+    @auditions = @casting.auditions
   end
 
   def update
