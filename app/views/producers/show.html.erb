@@ -3,7 +3,7 @@
 </head>
 <body>
 <div class="container">
-  <%= cl_image_tag @producerer.profile_picture.key, height: 300, width: 400, crop: :fill if @producer.profile_picture.attached? %>
+  <%= cl_image_tag @producer.profile_picture.key, height: 300, width: 400, crop: :fill if @producer.profile_picture.attached? %>
   <p><strong>Producer Name:</strong> <%= @producer.name %></p>
   <p><strong>Producer Bio:</strong> <%= @producer.bio %></p>
   <p><strong>Producer Email:</strong> <%= current_user.email %></p>
@@ -18,6 +18,22 @@
 <div class="container">
   <% if current_user.id == @producer.user_id %>
     <%= link_to "Create New Casting", new_producer_casting_path(@producer), class: "btn btn-flat" %>
+  <% end %>
+</div>
+
+<div class="container">
+  <h2>Castings</h2>
+  <% if @castings.any? %>
+    <ul>
+      <% @castings.each do |casting| %>
+        <li>
+          <%= link_to casting.title, casting_path(casting) %>
+          <p><%= casting.description %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No castings available.</p>
   <% end %>
 </div>
 </body>
