@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h1>My Auditions</h1>
+
+  <% if @auditions.any? %>
+    <div class="cards">
+      <% @auditions.each do |audition| %>
+        <div class="card">
+          <%= link_to casting_path(audition.casting) do %>
+            <div class="image-placeholder">
+              <% if audition.casting.photo.attached? %>
+                <%= cl_image_tag audition.casting.photo.key, class: 'card-image' %>
+              <% end %>
+            </div>
+            <h2><%= audition.casting.title %></h2>
+            <div class="details">
+              <span><%= audition.casting.location %></span>
+              <span><%= audition.casting.dancing_style %></span>
+            </div>
+            <p><%= audition.casting.description %></p>
+            <div class="status"><%= audition.status %></div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>You have not applied to any auditions yet.</p>
+  <% end %>
+  <%= link_to "Back", root_path, class: 'btn button-link' %>
+</div>
+

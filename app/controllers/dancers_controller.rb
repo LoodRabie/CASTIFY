@@ -36,7 +36,7 @@ class DancersController < ApplicationController
   end
 
   def my_auditions
-    @dancer = current_user.dancers.find(params[:id])
+    @dancer = current_user.dancer
     @auditions = @dancer.auditions
   end
 

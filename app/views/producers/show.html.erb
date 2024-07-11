@@ -1,23 +1,18 @@
-<head>
-    <link rel="stylesheet" href="_show.scss">
-</head>
-<body>
-<div class="container">
-  <%= cl_image_tag @producer.profile_picture.key, height: 300, width: 400, crop: :fill if @producer.profile_picture.attached? %>
-  <p><strong>Producer Name:</strong> <%= @producer.name %></p>
-  <p><strong>Producer Bio:</strong> <%= @producer.bio %></p>
-  <p><strong>Producer Email:</strong> <%= current_user.email %></p>
-</div>
+<div class="producer-show-page">
+  <div class="background">
+    <div class="producer-info">
+     <%= cl_image_tag @producer.profile_picture.key, height: 300, width: 400, crop: :fill if @producer.profile_picture.attached? %>
+      <p><strong>Producer Name:</strong> <%= @producer.name %></p>
+      <p><strong>Producer Bio:</strong> <%= @producer.bio %></p>
+      <p><strong>Producer Email:</strong> <%= current_user.email %></p>
 
-<div class="container">
-  <% if current_user.id == @producer.user_id %>
-    <%= link_to "Update Profile", edit_producer_path(current_user.producer), class: "btn btn-flat" %>
-  <% end %>
+      <% if current_user.id == @producer.user_id %>
+        <%= link_to "Update Profile", edit_producer_path(current_user.producer), class: "btn btn-flat" %>
+      <% end %>
+      <br>
+      <% if current_user.id == @producer.user_id %>
+        <%= link_to "Create New Casting", new_producer_casting_path(@producer), class: "btn btn-flat", style: "margin-top: 10px;" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<br>
-<div class="container">
-  <% if current_user.id == @producer.user_id %>
-    <%= link_to "Create New Casting", new_producer_casting_path(@producer), class: "btn btn-flat" %>
-  <% end %>
-</div>
-</body>

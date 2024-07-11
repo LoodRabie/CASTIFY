@@ -17,23 +17,14 @@ class AuditionsController < ApplicationController
     @audition = @casting.auditions.build(audition_params)
     @audition.status = 'pending'
     @audition.date = Date.today
+
     if @audition.save
-      DancerAudition.create(dancer: current_user.dancer, audition: @audition)
+      if current_user.dancer.present?
+        DancerAudition.create(dancer_id: current_user.dancer.id, audition_id: @audition.id)
+      end
       redirect_to audition_path(@audition), notice: 'Audition submitted successfully.'
     else
-      render :new
-    end
-  end
-
-  # GET /castings/:casting_id/auditions
-  def index
-    if current_user.producer?
-      @auditions = @casting.auditions
-    elsif current_user.dancer?
-      @dancer = Dancer.find(params[:dancer_id])
-      @auditions = current_user.dancer.auditions
-    else
-      redirect_to root_path
+      render :new, locals: { audition: @audition }
     end
   end
 
