@@ -3,7 +3,7 @@ class Audition < ApplicationRecord
 
   has_many :dancer_auditions, dependent: :destroy
   has_many :dancers, through: :dancer_auditions
-  has_many_attached :videos, dependent: :destroy
+  has_one_attached :video, dependent: :destroy
 
   STATUSES = %w[pending accepted denied]
 
