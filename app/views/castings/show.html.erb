@@ -17,9 +17,18 @@
                             <span class="tag"><%= @casting.dancing_style %></span>
                         </div>
                         <div class="apply-details">
-                    <span class="tag"><%= @casting.deadline %></span>
-                    <span class="tag"><%= @casting.location %></span>
-                    <%= link_to "Apply now", new_producer_casting_audition_path(@casting.producer, @casting), class: "button" %>
+                          <span class="tag"><%= @casting.deadline %></span>
+                          <span class="tag"><%= @casting.location %></span>
+                            <% if current_user.dancer %>
+                              <%= link_to "Apply now", new_producer_casting_audition_path(@casting.producer, @casting), class: "button" %>
+                            <% end %>
+
+                            <% if current_user.producer? %>
+                                <div class="auditions-link">
+                                    <%= link_to "View All Auditions", producer_casting_auditions_path(@casting.producer, @casting), class: "button" %>
+                                </div>
+                            <% end %>
+
                         </div>
                     </div>
                 </div>

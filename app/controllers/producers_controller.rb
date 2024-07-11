@@ -1,24 +1,33 @@
 class ProducersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_producer, only: %i[show edit update destroy]
 
   def new
     @producer = current_user.build_producer
   end
 
   def edit
-    @producer = current_user.producer
+    @producer = Producer.find(params[:id])
   end
 
   def show
-    @producer = current_user.producer
-    @casting = Casting.find(params[:id])
-    @auditions = @casting.auditions
+    @producer = Producer.find(params[:id])
+    @castings = @producer.castings
+
+    if @castings.any?
+      @auditions = @castings.map(&:auditions).flatten
+    else
+      @auditions = []
+    end
   end
 
   def update
     @producer = Producer.find(params[:id])
-    @producer.update(producer_params)
-    redirect_to producer_path(@producer)
+    if @producer.update(producer_params)
+      redirect_to @producer, notice: 'Producer was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def create
@@ -30,7 +39,17 @@ class ProducersController < ApplicationController
     end
   end
 
+  def destroy
+    @producer = Producer.find(params[:id])
+    @producer.destroy
+    redirect_to producers_url, notice: 'Producer was successfully destroyed.'
+  end
+
   private
+
+  def set_producer
+    @producer = Producer.find(params[:id])
+  end
 
   def producer_params
     params.require(:producer).permit(:name, :bio)

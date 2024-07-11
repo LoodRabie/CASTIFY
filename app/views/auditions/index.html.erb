@@ -1,22 +1,26 @@
-<h1>Auditions for <%= @dancer.name %></h1>
+<h1>Auditions for <%= @dancer.name if @dancer %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Status</th>
-      <th>Date</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @auditions.each do |audition| %>
+<% if @auditions.present? && @auditions.any? %>
+  <table>
+    <thead>
       <tr>
-        <td><%= audition.casting.title %></td>
-        <td><%= audition.status %></td>
-        <td><%= audition.date %></td>
-        <td><%= link_to 'Show', [@dancer, audition] %></td>
+        <th>Audition Date</th>
+        <th>Status</th>
+        <!-- Add more headers as needed -->
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @auditions.each do |audition| %>
+        <tr>
+          <td><%= audition.created_at.strftime("%B %d, %Y") %></td>
+          <td><%= audition.status %></td>
+          <!-- Add more columns as needed -->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% elsif @auditions.present? && !@auditions.any? %>
+  <p>No auditions found for this casting.</p>
+<% else %>
+  <p>No auditions found.</p>
+<% end %>
