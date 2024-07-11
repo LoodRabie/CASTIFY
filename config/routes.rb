@@ -24,5 +24,7 @@ Rails.application.routes.draw do
     resources :dancer_auditions, only: [:create, :destroy]
   end
 
+  get 'my_auditions', to: 'dancers#my_auditions', as: 'my_auditions'
+  
   get "up" => "rails/health#show", as: :rails_health_check
 end
