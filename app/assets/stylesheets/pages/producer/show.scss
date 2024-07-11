@@ -1,0 +1,55 @@
+// producer/_show.scss
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  .background {
+    height: 100vh;
+    background-image: url('https://images.squarespace-cdn.com/content/v1/53c8b2d6e4b0945af87a75c9/1689123330641-L3G0WLV21V5KSQ87X7K5/Simple+image+based+business+facebook+banner-5.png?format=1500w'); /* Background image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .producer-info {
+    max-width: 800px; /* Increased max-width */
+    padding: 40px; /* Increased padding */
+    background-color: #fff; /* White background for containers */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    border-radius: 5px;
+  }
+
+  .container.producer-info {
+    padding: 30px;
+  }
+
+  .container p {
+    margin-bottom: 15px;
+  }
+
+  .container p strong {
+    font-weight: bold;
+  }
+
+  .btn {
+    background-color: #4D04C4;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    padding: 10px 20px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+    width: auto;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &.btn-flat {
+      width: 100%;
+
+      &:hover {
+        background-color: #8b6ac0;
+      }
+    }
+  }
