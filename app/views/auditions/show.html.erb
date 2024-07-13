@@ -4,10 +4,10 @@
 
 
   <h3>Submitted Video</h3>
-<%= video_tag @audition.video, height: 300, width: 400, controls: true %>
+<%#= video_tag @audition.video, height: 300, width: 400, controls: true %>
 
 
-  <% if current_user.producer? %>
-    <%= link_to 'Edit Audition', edit_audition_path(@audition) %>
-  <% end %>
+  <%# if @audition.dancer == current_user.dancer %>
+    <%#= link_to 'Edit Audition', edit_audition_path(@audition) %>
+  <%# end %>
 </div>

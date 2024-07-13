@@ -13,7 +13,7 @@
       <% @auditions.each do |audition| %>
         <tr>
           <td><%= audition.created_at.strftime("%B %d, %Y") %></td>
-          <td><%= audition.status %></td>
+          <td><%= link_to audition.status, audition_path(audition) %></td>
           <!-- Add more columns as needed -->
         </tr>
       <% end %>
