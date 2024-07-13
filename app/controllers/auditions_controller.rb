@@ -1,7 +1,11 @@
 class AuditionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_casting, only: [:new, :create]
+  before_action :set_casting, only: [:new, :create, :index]
   before_action :set_audition, only: [:show]
+
+  def index
+    @auditions = @casting.auditions
+  end
 
   # GET /castings/:casting_id/auditions/new
   def new
