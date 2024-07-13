@@ -1,27 +1,52 @@
-<h1>This is all your castings</h1>
 
-<div class="container">
-  <h1>Castings for <%= @producer.name %></h1>
+<% if current_user.producer %>
+  <h1>This is all your castings</h1>
 
-  <% if @castings.any? %>
-    <ul class="list-group">
-      <% @castings.each do |casting| %>
-        <li class="list-group-item">
-          <h4><%= casting.title %></h4>
-          <p><strong>Description:</strong> <%= casting.description %></p>
-          <p><strong>Dancing Style:</strong> <%= casting.dancing_style %></p>
-          <p><strong>Deadline:</strong> <%= casting.deadline %></p>
-          <p><strong>Location:</strong> <%= casting.location %></p>
-          <div class="btn-group">
-            <%= link_to 'Show', producer_casting_path(@producer, casting), class: 'btn btn-primary mr-1' %>
-            <%= link_to 'Edit', edit_producer_casting_path(@producer, casting), class: 'btn btn-primary mr-1' %>
-            <%= link_to 'Destroy', producer_casting_path(@producer, casting), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-        </li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>No castings found.</p>
-  <% end %>
+  <div class="container">
+    <h1>Castings for <%= @producer.name %></h1>
 
-  <%= link_to "Create New Casting", new_producer_casting_path(@producer), class: "btn btn-primary" %>
-</div>
+    <% if @castings.any? %>
+      <ul class="list-group">
+        <% @castings.each do |casting| %>
+          <li class="list-group-item">
+            <h4><%= casting.title %></h4>
+            <p><strong>Description:</strong> <%= casting.description %></p>
+            <p><strong>Dancing Style:</strong> <%= casting.dancing_style %></p>
+            <p><strong>Deadline:</strong> <%= casting.deadline %></p>
+            <p><strong>Location:</strong> <%= casting.location %></p>
+            <div class="btn-group">
+              <%= link_to 'Show', producer_casting_path(@producer, casting), class: 'btn btn-primary mr-1' %>
+              <%= link_to 'Edit', edit_producer_casting_path(@producer, casting), class: 'btn btn-primary mr-1' %>
+              <%= link_to 'Destroy', producer_casting_path(@producer, casting), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No castings found.</p>
+    <% end %>
+
+    <%= link_to "Create New Casting", new_producer_casting_path(@producer), class: "btn btn-primary" %>
+  </div>
+<% else %>
+  <div class="cards">
+    <% @castings.each do |casting| %>
+      <div class="card">
+        <%= link_to casting_path(casting) do %>
+          <div class="image-placeholder">
+            <% if casting.photo.attached? %>
+              <%= cl_image_tag casting.photo.key, class: 'card-image' %>
+             <% end %>
+           </div>
+          <h2><%= casting.title %></h2>
+           <div class="details">
+             <span><%= casting.location %></span>
+             <span><%= casting.dancing_style %></span>
+          </div>
+          <p><%= casting.description %></p>
+          <div class="due-date"><%= casting.deadline %></div>
+        <% end %>
+       </div>
+     <% end %>
+  </div>
+
+<% end %>
