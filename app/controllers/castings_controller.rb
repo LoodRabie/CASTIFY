@@ -1,10 +1,14 @@
 class CastingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_producer, only: [:index]
   before_action :set_casting, only: [:show, :edit, :update, :destroy]
 
   def index
-    @castings = Casting.all.includes(:producer)
+    if current_user.producer
+      @producer = Producer.find(params[:producer_id])
+      @castings = Casting.all.includes(:producer)
+    else
+      @castings = Casting.all
+    end
   end
 
   def new
@@ -23,7 +27,7 @@ class CastingsController < ApplicationController
   end
 
   def update
-    @casting = Casting.find(params[:id])
+    @casting = Casting.find(params[:casting_id])
     if @casting.update(casting_params)
       redirect_to casting_path(@casting), notice: 'Casting was successfully updated.'
     else
@@ -50,7 +54,7 @@ class CastingsController < ApplicationController
   end
 
   def set_casting
-    @casting = Casting.find(params[:id])
+    @casting = Casting.find(params[:casting_id])
   end
 
   def casting_params

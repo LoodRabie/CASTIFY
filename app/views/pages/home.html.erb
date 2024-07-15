@@ -7,7 +7,9 @@
       <div class="container">
         <h1>Castify</h1>
         <p>Find your next gig</p>
-        <a class="btn btn-home" href="#">Apply now</a>
+
+        <%= link_to "Apply now", castings_path, class: "btn btn-flat" %>
+
       </div>
     </div>
 
@@ -15,12 +17,13 @@
       <input type="text" placeholder="Search...">
       <button>Search</button>
     </div>-->
-
-  <div class="search-bar">
-    <%= form_with url: root_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search..." %>
-      <%= submit_tag "Search", class: "btn btn-flat" %>
-    <% end %>
+  <div>
+    <div class="search-bar">
+      <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search..." %>
+        <%= submit_tag "Search", class: "btn btn-flat" %>
+      <% end %>
+    </div>
   </div>
 
     <% if current_user && current_user.producer %>
@@ -65,24 +68,5 @@
       </div>
     <% end %>
 
-    <% if user_signed_in? %>
-      <% if current_user.role == "producer" %>
-        <% if current_user.producer %>
-          <%= link_to "Producer Profile", producer_path(current_user.producer) %>
-        <% else %>
-          <%= link_to "Create Producer Profile", new_producer_path %>
-        <% end %>
-      <% end %>
-
-      <% if current_user.role == "dancer" %>
-        <% if current_user.dancer %>
-          <%= link_to "Dancer Profile", dancer_path(current_user.dancer) %>
-        <% else %>
-          <%= link_to "Create Dancer Profile", new_dancer_path %>
-        <% end %>
-      <% else %>
-        <%= link_to "Kindly confirm if you are a 'Dancer' or a 'Producer'", edit_user_registration_path(current_user) %>
-      <% end %>
-    <% end %>
   </div>
 </body>
