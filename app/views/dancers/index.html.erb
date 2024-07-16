@@ -1,0 +1,22 @@
+
+<% if current_user.role == "dancer" %>
+  <div class="dancer-show-page">
+    <div class="background">
+  <% @dancers.each do |dancer| %>
+    <div class="dancer-info">
+      <% if dancer.profile_picture.attached? %>
+        <%= cl_image_tag dancer.profile_picture.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+      <p><strong>Dancer Name:</strong> <%= dancer.name %></p>
+      <p><strong>Dancer Age:</strong> <%= dancer.age %></p>
+      <p><strong>Dancer Location:</strong> <%= dancer.location %></p>
+    </div>
+  <% end %>
+</div>
+  </div>
+<% end %>
+
+<div class="container">
+  <h3>Auditions</h3>
+  <%= link_to "View Applied Auditions", my_auditions_path(@dancer), class: "button" %>
+</div>

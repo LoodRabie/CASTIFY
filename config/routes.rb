@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :castings, only: [:new, :create, :index]
   end
 
-  resources :castings, only: [:show, :edit, :update] do
+  resources :castings, only: [:show, :edit, :update, :index] do
     resources :auditions, except: [:show]
   end
 

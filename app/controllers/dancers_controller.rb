@@ -6,10 +6,15 @@ class DancersController < ApplicationController
     @dancer = current_user.build_dancer
   end
 
+  def index
+    @dancers = Dancer.all
+  end
+
   def edit
   end
 
   def show
+
   end
 
   def create
