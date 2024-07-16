@@ -1,7 +1,3 @@
-<head>
-  <link rel="stylesheet" href="home/_home.scss">
-</head>
-<body>
   <div class="home-page">
     <div class="banner">
       <div class="container">
@@ -30,7 +26,7 @@
                 <% if dancer.profile_picture.attached? %>
                   <%= cl_image_tag dancer.profile_picture.key, class: 'card-image' %>
                 <% end %>
-              </div>
+
               <div class="card-info">
               <h2><%= dancer.name %></h2>
               <div class="details">
@@ -41,7 +37,8 @@
             <% end %>
           </div>
         <% end %>
-      </div>
+          </div>
+
     <% else current_user && current_user.dancer %>
       <div class="cards">
         <% @castings.each do |casting| %>
@@ -62,11 +59,11 @@
 
               <div class="due-date"><i class="fas fa-calendar-alt icon"></i><%= casting.deadline %></div>
 
-            <% end %>
           </div>
-        <% end %>
+            <% end %>
       </div>
+        <% end %>
+    </div>
     <% end %>
 
-  </div>
-</body>
+ </div>
