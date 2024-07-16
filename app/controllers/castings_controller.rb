@@ -40,6 +40,7 @@ class CastingsController < ApplicationController
 
   def show
     @producer = current_user.producer
+    @same_style_castings = Casting.where(dancing_style: @casting.dancing_style).where.not(id: @casting.id)
   end
 
   def destroy
@@ -54,7 +55,7 @@ class CastingsController < ApplicationController
   end
 
   def set_casting
-    @casting = Casting.find(params[:casting_id])
+    @casting = Casting.find(params[:id])
   end
 
   def casting_params

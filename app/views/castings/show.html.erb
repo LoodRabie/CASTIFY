@@ -20,7 +20,9 @@
                           <span class="tag"><%= @casting.deadline %></span>
                           <span class="tag"><%= @casting.location %></span>
                             <% if current_user.dancer %>
-                              <%= link_to "Apply now", new_producer_casting_audition_path(@casting.producer, @casting), class: "button" %>
+                            <div>
+                              <%= link_to "Apply now", new_casting_audition_path(@casting), class: "btn" %>
+                            </div>
                             <% end %>
 
                             <% if current_user.producer? %>
@@ -30,36 +32,40 @@
                             <% end %>
 
                         </div>
+                        <div class="produer-details">
+                          <div class="job-image">
+                            <%= cl_image_tag @casting.producer.profile_picture.key, height: 300, width: 400, crop: :fill if @casting.producer.profile_picture.attached? %>
+                          </div>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </section>
         <section class="interested">
-            <h3>You may also be interested in...</h3>
-            <div class="cards">
-                <div class="card">
-                    <h4>Show name</h4>
-                    <p>City Name</p>
-                    <p>Style</p>
-                    <p>This is a paragraph description where we'll add a bunch of words that shouldn't go beyond a few lines...</p>
-                    <p>Due date</p>
-                </div>
-                <div class="card">
-                    <h4>Show name</h4>
-                    <p>City Name</p>
-                    <p>Style</p>
-                    <p>This is a paragraph description where we'll add a bunch of words that shouldn't go beyond a few lines...</p>
-                    <p>Due date</p>
-                </div>
-                <div class="card">
-                    <h4>Show name</h4>
-                    <p>City Name</p>
-                    <p>Style</p>
-                    <p>This is a paragraph description where we'll add a bunch of words that shouldn't go beyond a few lines...</p>
-                    <p>Due date</p>
-                </div>
-            </div>
+            <h3>You might also be interested in these</h3>
+            <% if @same_style_castings.any? %>
+                <% @same_style_castings.each do |same_style_casting| %>
+                  <div class="card">
+                    <%= link_to casting_path(same_style_casting) do %>
+                      <div class="image-placeholder">
+                        <% if same_style_casting.photo.attached? %>
+                          <%= cl_image_tag same_style_casting.photo.key, class: 'card-image' %>
+                        <% end %>
+                      </div>
+                    <h2><%= same_style_casting.title %></h2>
+                        <div class="details">
+                          <span><%= same_style_casting.location %></span>
+                          <span><%= same_style_casting.dancing_style %></span>
+                        </div>
+                        <p><%= same_style_casting.description %></p>
+                      <div class="due-date"><%= same_style_casting.deadline %></div>
+                    <% end %>
+                  </div>
+                <% end %>
+            <% else %>
+              <p>No similar castings found.</p>
+            <% end %>
         </section>
     </div>
 </body>

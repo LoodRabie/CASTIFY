@@ -8,7 +8,7 @@
         <h1>Castify</h1>
         <p>Find your next gig</p>
 
-        <%= link_to "Apply now", castings_path, class: "btn btn-flat" %>
+        <%= link_to "Apply now", castings_path, class: "btn" %>
 
       </div>
     </div>
@@ -61,7 +61,9 @@
                 <span><%= casting.dancing_style %></span>
               </div>
               <p><%= casting.description %></p>
-              <div class="due-date"><%= casting.deadline %></div>
+              <div class="due-date">
+                <%= casting.deadline %>
+              </div>
             <% end %>
           </div>
         <% end %>
