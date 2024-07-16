@@ -8,15 +8,11 @@
         <h1>Castify</h1>
         <p>Find your next gig</p>
 
-        <%= link_to "Apply now", castings_path, class: "btn" %>
+        <%= link_to "Apply now", castings_path, class: "btn btn-flat" %>
 
       </div>
     </div>
 
-    <!--  <div class="search-bar">
-      <input type="text" placeholder="Search...">
-      <button>Search</button>
-    </div>-->
   <div>
     <div class="search-bar">
       <%= form_with url: root_path, method: :get, class: "d-flex" do %>
@@ -31,7 +27,7 @@
         <% @dancers.each do |dancer| %>
           <div class="card">
             <%= link_to dancer_path(dancer) do %>
-<!--              <div class="image-placeholder">-->
+
                 <% if dancer.profile_picture.attached? %>
                   <%= cl_image_tag dancer.profile_picture.key, class: 'card-image' %>
                 <% end %>
@@ -52,11 +48,11 @@
         <% @castings.each do |casting| %>
           <div class="card">
             <%= link_to casting_path(casting) do %>
-<!--              <div class="image-placeholder">-->
+
                 <% if casting.photo.attached? %>
                   <%= cl_image_tag casting.photo.key, class: 'card-image' %>
                 <% end %>
-<!--              </div>-->
+
               <div class="card-info">
               <h2><%= casting.title %></h2>
               <div class="details">
@@ -64,9 +60,8 @@
                 <span><%= casting.dancing_style %></span>
               </div>
               <p><%= casting.description %></p>
-
               <div class="due-date"><i class="fas fa-calendar-alt icon"></i><%= casting.deadline %></div>
-
+              </div>
             <% end %>
           </div>
         <% end %>
