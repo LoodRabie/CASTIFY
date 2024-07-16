@@ -17,3 +17,9 @@
   font-weight: bold;
   font-family: "Playwrite US Modern", cursive;
 }
+
+.navbar .mx-auto {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}

@@ -17,6 +17,11 @@
     border-radius: 5px;
   }
 
+  img, svg {
+    vertical-align: middle;
+    border-radius: 5%;
+}
+
   .container.producer-info {
     padding: 30px;
   }

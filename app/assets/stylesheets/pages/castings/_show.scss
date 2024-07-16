@@ -39,6 +39,15 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.producer-image {
+  max-width: 100%;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .job-image img {
   width: 100%;
   height: auto;
@@ -114,6 +123,12 @@ body {
   background-color: #4D04C4;
 }
 
+.btn:hover {
+  background: #670BFF;
+  color: white;
+}
+
+
 /* Interested section */
 .interested {
   background-color: #ffffff;
@@ -130,46 +145,78 @@ body {
 }
 
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
 }
 
 .card {
-  background-color: #ffffff;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+    width: 250px;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-decoration: none;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
 }
 
-.card h4 {
-  margin-top: 0;
-  font-size: 1.5rem;
-  color: #670BFF;
+.card .image-placeholder {
+  background-color: #e0e0e0;
+  height: 150px;
+  position: relative;
+  border-radius: 8px 8px 0 0;
 }
 
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card .status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff6347;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.card h2 {
+  font-size: 1.5em;
+  margin: 15px 0 10px;
+  text-decoration: none;
+}
+
+.card .details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #777;
+  text-decoration: none;
+}
 .card p {
-  margin-bottom: 10px;
-  font-size: 1rem;
+  font-size: 14px;
   color: #555;
+  margin: 10px 0;
+  text-decoration: none;
+}
+.card .due-date {
+  font-size: 12px;
+  text-align: right;
+  color: #999;
+  text-decoration: none;
 }
 
-.card:hover {
-  background-color: #dbc0f7;
-  color: #a35dd4;
-}
-
-.apply-details button {
-  background-color: #670BFF;
-  color: #ffffff;
-}
-
-.apply-details button:hover {
-  background-color: #4D04C4;
+.card a {
+  text-decoration: none;
 }

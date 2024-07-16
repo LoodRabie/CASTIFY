@@ -3,8 +3,10 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "https://t4.ftcdn.net/jpg/00/91/20/09/360_F_91200919_gUFH5eziwPuYmhRYL142qeuoimnra6g7.jpg" %>
     <% end %>
-
+    
+    <div class="mx-auto text-center">
       <h5 class="title mt-2">Castify</h5>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -17,7 +19,7 @@
           <% if current_user.role == "dancer" %>
             <li class="nav-item active">
               <% if current_user.dancer %>
-                <%= link_to "Dancer Profile", dancers_path(current_user.dancer), class: "nav-link" %>
+                <%= link_to "Profile", dancers_path(current_user.dancer), class: "nav-link" %>
               <% else %>
                 <%= link_to "Create Dancer Profile", new_dancer_path, class: "btn btn-flat" %>
               <% end %>
@@ -26,7 +28,7 @@
 
           <% if current_user.role == "dancer" %>
             <li class="nav-item active">
-              <%= link_to "My Auditions", my_auditions_path, class: "nav-link" %>
+              <%= link_to "Auditions", my_auditions_path, class: "nav-link" %>
             </li>
           <% end %>
 
@@ -34,7 +36,7 @@
           <% if current_user.role == "producer" %>
             <li class="nav-item active">
               <% if current_user.producer %>
-                <%= link_to "Producer Profile", producers_path(current_user.producer.id), class: "nav-link" %>
+                <%= link_to "Profile", producers_path(current_user.producer.id), class: "nav-link" %>
               <% else %>
                 <%= link_to "Create Producer Profile", new_producer_path, class: "btn btn-flat" %>
               <% end %>
