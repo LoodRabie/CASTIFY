@@ -31,16 +31,18 @@
         <% @dancers.each do |dancer| %>
           <div class="card">
             <%= link_to dancer_path(dancer) do %>
-              <div class="image-placeholder">
+<!--              <div class="image-placeholder">-->
                 <% if dancer.profile_picture.attached? %>
                   <%= cl_image_tag dancer.profile_picture.key, class: 'card-image' %>
                 <% end %>
               </div>
+              <div class="card-info">
               <h2><%= dancer.name %></h2>
               <div class="details">
                 <span><%= dancer.dancing_styles %></span>
               </div>
               <p><%= dancer.bio %></p>
+              </div>
             <% end %>
           </div>
         <% end %>
@@ -50,18 +52,20 @@
         <% @castings.each do |casting| %>
           <div class="card">
             <%= link_to casting_path(casting) do %>
-              <div class="image-placeholder">
+<!--              <div class="image-placeholder">-->
                 <% if casting.photo.attached? %>
                   <%= cl_image_tag casting.photo.key, class: 'card-image' %>
                 <% end %>
-              </div>
+<!--              </div>-->
+              <div class="card-info">
               <h2><%= casting.title %></h2>
               <div class="details">
-                <span><%= casting.location %></span>
+                <span><i class="fas fa-map-marker-alt icon"></i><%= casting.location %></span>
                 <span><%= casting.dancing_style %></span>
               </div>
               <p><%= casting.description %></p>
-              <div class="due-date"><%= casting.deadline %></div>
+              <div class="due-date"><i class="fas fa-calendar-alt icon"></i><%= casting.deadline %></div>
+              </div>
             <% end %>
           </div>
         <% end %>
