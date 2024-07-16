@@ -1,7 +1,7 @@
-  <div class='background'>
-    <div class='form-container'>
+<div class='background'>
+  <div class='dancer-form-container'>
       <%= simple_form_for @dancer do |f| %>
-        <div class='dancer-form-group'>
+        <div class='form-group'>
           <%= f.input :name %>
           <%= f.input :age %>
           <%= f.input :location %>
@@ -10,8 +10,7 @@
           <%= f.input :profile_picture, as: :file, label: 'Profile Picture' %>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.button :submit, 'Update Dancer Profile',  class: 'btn btn-flat' %>
-          <%= link_to 'Back', dancer_path(current_user.dancer), class: 'btn btn-flat', style: 'margin-top: 10px;' %>
         </div>
       <% end %>
-    </div>
   </div>
+</div>

@@ -1,8 +1,13 @@
-<%= simple_form_for @producer do |f| %>
-  <%= f.input :name %>
-  <%= f.input :bio %>
-  <%= f.input :profile_picture, as: :file, label: 'Profile Picture' %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-
-  <%= f.button :submit, 'Update Producer Profile' %>
-<% end %>
+<div class='background'>
+  <div class='producer-form-container'>
+    <%= simple_form_for @producer do |f| %>
+      <div class='form-group'>
+      <%= f.input :name %>
+      <%= f.input :bio %>
+      <%= f.input :profile_picture, as: :file, label: 'Profile Picture' %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.button :submit, 'Update Producer Profile',  class: 'btn btn-flat' %>
+      </div>
+    <% end %>
+  </div>
+</div>
