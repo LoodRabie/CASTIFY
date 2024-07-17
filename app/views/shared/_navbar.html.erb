@@ -3,7 +3,7 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "https://t4.ftcdn.net/jpg/00/91/20/09/360_F_91200919_gUFH5eziwPuYmhRYL142qeuoimnra6g7.jpg" %>
     <% end %>
-    
+
     <div class="mx-auto text-center">
       <h5 class="title mt-2">Castify</h5>
     </div>
@@ -19,7 +19,7 @@
           <% if current_user.role == "dancer" %>
             <li class="nav-item active">
               <% if current_user.dancer %>
-                <%= link_to "Profile", dancers_path(current_user.dancer), class: "nav-link" %>
+                <%= link_to "Profile", dancer_path(current_user.dancer), class: "nav-link" %>
               <% else %>
                 <%= link_to "Create Dancer Profile", new_dancer_path, class: "btn btn-flat" %>
               <% end %>
