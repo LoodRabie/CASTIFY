@@ -6,10 +6,14 @@
     <div class="banner">
       <div class="container">
         <h1>Castify</h1>
-        <p>Find your next gig</p>
-
-        <%= link_to "Apply now", castings_path, class: "btn" %>
-
+          <% if current_user && current_user.dancer %>
+            <p>Find your next gig</p>
+            <%= link_to "Apply now", castings_path, class: "btn" %>
+          <% end %>
+          <% if current_user && current_user.producer %>
+          <p>Find the perfect dancers</p>
+            <%= link_to "Find Dancers", dancers_path, class: "btn" %>
+          <% end %>
       </div>
     </div>
 
