@@ -1,26 +1,25 @@
-<h1>Auditions for <%= @dancer.name if @dancer %></h1>
 
-<% if @auditions.present? && @auditions.any? %>
-  <table>
-    <thead>
-      <tr>
-        <th>Audition Date</th>
-        <th>Status</th>
-        <!-- Add more headers as needed -->
-      </tr>
-    </thead>
-    <tbody>
-      <% @auditions.each do |audition| %>
-        <tr>
-          <td><%= audition.created_at.strftime("%B %d, %Y") %></td>
-          <td><%= link_to audition.status, audition_path(audition) %></td>
-          <!-- Add more columns as needed -->
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% elsif @auditions.present? && !@auditions.any? %>
-  <p>No auditions found for this casting.</p>
-<% else %>
-  <p>No auditions found.</p>
-<% end %>
+
+<h1>Auditions <%= @dancer.name if @dancer %></h1>
+
+<div class="row">
+  <% if @auditions.present? && @auditions.any? %>
+    <% @auditions.each do |audition| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <!-- Audition details -->
+          <div class="card-body">
+            <h5 class="card-title">Audition Date: <%= audition.created_at.strftime("%B %d, %Y") %></h5>
+            <p class="card-text">Dancer: <%= audition.dancers.name %></p>
+            <p class="card-text">Status: <%= audition.status %></p>
+            <%= link_to "View Audition", audition_path(audition), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="col">
+      <p>No auditions found<%= " for #{pluralize(@casting.auditions.count, 'casting')}" if @casting %>.</p>
+    </div>
+  <% end %>
+</div>
