@@ -1,13 +1,29 @@
 <div class="container">
+  <p><strong>Dancer Name:</strong> <%= @dancer_audition.dancer.name %></p>
+  <p><strong>Dancer Profile:</strong> <%= @dancer_audition.dancer.name %></p>
   <p><strong>Audition Status:</strong> <%= @audition.status %></p>
   <p><strong>Audition Date:</strong> <%= @audition.date %></p>
 
 
   <h3>Submitted Video</h3>
-<%#= video_tag @audition.video, height: 300, width: 400, controls: true %>
 
 
-  <%# if @audition.dancer == current_user.dancer %>
-    <%#= link_to 'Edit Audition', edit_audition_path(@audition) %>
-  <%# end %>
+  <% if @dancer_audition.dancer == current_user.dancer %>
+    <%= video_tag @audition.video, height: 300, width: 400, controls: true %>
+  <% end %>
+
+<% if @dancer_audition.audition.casting.producer == current_user.producer %>
+<%= video_tag @audition.video, height: 300, width: 400, controls: true %>
+<%= simple_form_for [@casting, @audition] do |f| %>
+  <div class="field">
+    <%= f.input :status, as: :select, collection: ['accepted', 'denied', 'pending'], label: "Status" %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, "Update Status" %>
+  </div>
+<% end %>
+<% end %>
+
+
 </div>
