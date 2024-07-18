@@ -36,7 +36,7 @@
           <% if current_user.role == "producer" %>
             <li class="nav-item active">
               <% if current_user.producer %>
-                <%= link_to "Profile", producers_path(current_user.producer.id), class: "nav-link" %>
+                <%= link_to "Profile", producer_path(current_user.producer.id), class: "nav-link" %>
               <% else %>
                 <%= link_to "Create Producer Profile", new_producer_path, class: "btn btn-flat" %>
               <% end %>
