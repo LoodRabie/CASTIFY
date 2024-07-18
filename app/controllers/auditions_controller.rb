@@ -1,6 +1,6 @@
 class AuditionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_casting, only: [:new, :create, :index]
+  before_action :set_casting, only: %i[new create index]
   before_action :set_audition, only: [:show]
 
   def index
