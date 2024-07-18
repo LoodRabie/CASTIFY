@@ -4,24 +4,25 @@
 <body>
     <div class="container">
         <section class="main-content">
-            <div class="job-details">
-                <h2><%= @casting.title %></h2>
                 <div class="job-description">
                     <div class="job-image">
                         <%= cl_image_tag @casting.photo.key, height: 300, width: 400, crop: :fill if @casting.photo.attached? %>
                     </div>
                     <div class="description">
-                        <h3>Description</h3>
+                        <h2><%= @casting.title %></h2>
                         <p><%= @casting.description %></p>
                         <div class="info-tags">
                             <span class="tag"><%= @casting.dancing_style %></span>
                         </div>
                         <div class="apply-details">
-                          <span class="tag"><%= @casting.deadline %></span>
-                          <span class="tag"><%= @casting.location %></span>
+                          <span class="tag">📅  <%= @casting.deadline.strftime("%d %B, %Y") %></span>
+                          <span class="tag">📍  <%= @casting.location %></span>
+                        </div>
+
+                          <div class="app">
                             <% if current_user.dancer %>
                             <div>
-                              <%= link_to "Apply now", new_casting_audition_path(@casting), class: "btn" %>
+                              <%= link_to "Apply now", new_casting_audition_path(@casting), class: "btn btn-primary" %>
                             </div>
                             <% end %>
 
@@ -30,6 +31,7 @@
                                     <%= link_to "View All Auditions", casting_auditions_path(@casting), class: "button" %>
                                 </div>
                             <% end %>
+                          </div>
 
                         </div>
                         <div class="produer-details">
@@ -37,7 +39,6 @@
                             <%= cl_image_tag @casting.producer.profile_picture.key, height: 50, width: 50, crop: :fill if @casting.producer.profile_picture.attached? %>
                           </div>
                         </div>
-                    </div>
                 </div>
 
             </div>
