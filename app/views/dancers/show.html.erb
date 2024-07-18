@@ -2,6 +2,8 @@
   <div class="background">
     <div class="dancer-info">
         <%= cl_image_tag @dancer.profile_picture.key, height: 300, width: 400, crop: :fill if @dancer.profile_picture.attached? %>
+        <br>
+        <br>
         <p><strong>Dancer Name:</strong> <%= @dancer.name %></p>
         <p><strong>Dancer Age:</strong> <%= @dancer.age %></p>
         <p><strong>Dancer Location:</strong> <%= @dancer.location %></p>
