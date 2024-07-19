@@ -11,6 +11,7 @@ class DancersController < ApplicationController
   end
 
   def edit
+    @dancer = Dancer.find(params[:id])
   end
 
   def show
@@ -28,7 +29,7 @@ class DancersController < ApplicationController
   def update
     @dancer = Dancer.find(params[:id])
     if @dancer.update(dancer_params)
-      redirect_to dancer_path(@dancer), notice: 'Dancer profile was successfully updated.'
+      redirect_to @dancer, notice: 'Dancer profile was successfully updated.'
     else
       render :edit
     end
@@ -51,6 +52,6 @@ class DancersController < ApplicationController
   end
 
   def dancer_params
-    params.require(:dancer).permit(:name, :age, :location, :bio)
+    params.require(:dancer).permit(:name, :age, :location, :bio, :dancing_styles, :profile_picture)
   end
 end

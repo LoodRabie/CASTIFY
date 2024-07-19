@@ -2,10 +2,13 @@
   <div class="background">
     <div class="dancer-info">
         <%= cl_image_tag @dancer.profile_picture.key, height: 300, width: 400, crop: :fill if @dancer.profile_picture.attached? %>
+        <br>
+        <br>
         <p><strong>Dancer Name:</strong> <%= @dancer.name %></p>
         <p><strong>Dancer Age:</strong> <%= @dancer.age %></p>
         <p><strong>Dancer Location:</strong> <%= @dancer.location %></p>
         <p><strong>Dancer Bio:</strong> <%= @dancer.bio %></p>
+        <p><strong>Styles:</strong> <%= @dancer.dancing_styles %></p>
         <% if current_user && current_user.id == @dancer.user_id %>
           <%= link_to "Update Profile", edit_dancer_path(current_user.dancer), class: "btn btn-flat" %>
         <% end %>

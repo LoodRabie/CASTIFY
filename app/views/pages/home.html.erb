@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   <div class="home-page">
     <div class="banner">
       <div class="container">
@@ -10,13 +11,21 @@
           <% else %>
             <%= link_to "Apply now", castings_path, class: "btn" %>
           <% end %>
+=======
+<div class="home-page">
+  <div class="banner">
+    <div class="container">
+      <h1>Castify</h1>
+      <% if current_user %>
+        <% if current_user.producer %>
+          <%= link_to "Create a Casting", new_producer_casting_path(current_user.producer), class: "btn" %>
+>>>>>>> 0bb2fe5b4185e1d76c9c66f7b8039b0570954ae3
         <% else %>
           <%= link_to "Apply now", castings_path, class: "btn" %>
         <% end %>
-
-      </div>
+      <% end %>
     </div>
-
+  </div>
   <div>
     <div class="search-bar">
       <%= form_with url: root_path, method: :get, class: "d-flex" do %>
@@ -25,6 +34,7 @@
       <% end %>
     </div>
   </div>
+<<<<<<< HEAD
 
   <div>
       <div class="Cards-title">
@@ -41,51 +51,56 @@
   </div>
 
     <% if current_user && current_user.producer %>
+=======
+  <% if current_user %>
+    <% if current_user.producer %>
+>>>>>>> 0bb2fe5b4185e1d76c9c66f7b8039b0570954ae3
       <div class="cards">
         <% @dancers.each do |dancer| %>
           <div class="card">
             <%= link_to dancer_path(dancer) do %>
-                <% if dancer.profile_picture.attached? %>
-                  <%= cl_image_tag dancer.profile_picture.key, class: 'card-image' %>
-                <% end %>
-
+              <% if dancer.profile_picture.attached? %>
+                <%= cl_image_tag dancer.profile_picture.key, class: 'card-image' %>
+              <% end %>
               <div class="card-info">
-              <h2><%= dancer.name %></h2>
-              <div class="details">
-                <span><%= dancer.dancing_styles %></span>
-              </div>
-              <p><%= dancer.bio %></p>
+                <h2><%= dancer.name %></h2>
+                <div class="details">
+                  <span><%= dancer.dancing_styles %></span>
+                </div>
+                <p><%= dancer.bio %></p>
               </div>
             <% end %>
           </div>
         <% end %>
-          </div>
-
-    <% else current_user && current_user.dancer %>
+      </div>
+    <% elsif current_user.dancer %>
       <div class="cards">
         <% @castings.each do |casting| %>
           <div class="card">
             <%= link_to casting_path(casting) do %>
-
-                <% if casting.photo.attached? %>
-                  <%= cl_image_tag casting.photo.key, class: 'card-image' %>
-                <% end %>
-
+              <% if casting.photo.attached? %>
+                <%= cl_image_tag casting.photo.key, class: 'card-image' %>
+              <% end %>
               <div class="card-info">
+<<<<<<< HEAD
               <h2><%= casting.title %></h2>
               <div class="details">
                 <span><i class="fas fa-map-marker-alt icon"></i><%= casting.location %></span>
                 <span><i class="fa-solid fa-person-running">  </i><%= casting.dancing_style %></span>
+=======
+                <h2><%= casting.title %></h2>
+                <div class="details">
+                  <span><i class="fas fa-map-marker-alt icon"></i><%= casting.location %></span>
+                  <span><%= casting.dancing_style %></span>
+                </div>
+                <p><%= casting.description %></p>
+                <div class="due-date"><i class="fas fa-calendar-alt icon"></i><%= casting.deadline %></div>
+>>>>>>> 0bb2fe5b4185e1d76c9c66f7b8039b0570954ae3
               </div>
-              <p><%= casting.description %></p>
-
-              <div class="due-date"><i class="fas fa-calendar-alt icon"></i><%= casting.deadline %></div>
-
-          </div>
             <% end %>
-      </div>
+          </div>
         <% end %>
-    </div>
+      </div>
     <% end %>
-
- </div>
+  <% end %>
+</div>

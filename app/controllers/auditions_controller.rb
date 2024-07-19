@@ -1,7 +1,7 @@
 class AuditionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_casting, only: %i[new create index]
-  before_action :set_audition, only: [:show]
+  before_action :set_casting, only: [:new, :create, :index, :edit, :update]
+  before_action :set_audition, only: [:show, :edit, :update]
 
   def index
     @auditions = @casting.auditions
@@ -35,6 +35,7 @@ class AuditionsController < ApplicationController
   # GET /auditions/:id
   def show
     @dancer_audition = DancerAudition.find_by(audition: @audition)
+    @casting = @audition.casting
   end
 
   def edit
@@ -44,7 +45,7 @@ class AuditionsController < ApplicationController
   def update
     if current_user.producer?
       if @audition.update(audition_params)
-        redirect_to audition_path(@audition), notice: 'Audition updated successfully.'
+        redirect_to casting_auditions_path, notice: 'Audition updated successfully.'
       else
         render :edit
       end

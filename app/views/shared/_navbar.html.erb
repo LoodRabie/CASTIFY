@@ -18,7 +18,7 @@
 
           <% if current_user.role == "dancer" %>
             <li class="nav-item active">
-              <% if current_user.dancer %>
+              <% if current_user.dancer && current_user.dancer.id %>
                 <%= link_to "Profile", dancer_path(current_user.dancer), class: "nav-link" %>
               <% else %>
                 <%= link_to "Create Dancer Profile", new_dancer_path, class: "btn btn-flat" %>
@@ -35,7 +35,7 @@
 
           <% if current_user.role == "producer" %>
             <li class="nav-item active">
-              <% if current_user.producer %>
+              <% if current_user.producer && current_user.producer.id %>
                 <%= link_to "Profile", producer_path(current_user.producer.id), class: "nav-link" %>
               <% else %>
                 <%= link_to "Create Producer Profile", new_producer_path, class: "btn btn-flat" %>
@@ -55,13 +55,16 @@
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if current_user.dancer && current_user.dancer.profile_picture.attached? %>
-                <%= cl_image_tag current_user.dancer.profile_picture.key, transformation: [{ width: 50, height: 50, crop: :limit }], class: "avatar" %>
+                  <%= cl_image_tag current_user.dancer.profile_picture.key, transformation: [{ width: 50, height: 50, crop: :limit }], class: "avatar" %>
               <% elsif current_user.producer && current_user.producer.profile_picture.attached? %>
-                <%= cl_image_tag current_user.producer.profile_picture.key, transformation: [{ width: 50, height: 50, crop: :limit }], class: "avatar" %>
+                  <%= cl_image_tag current_user.producer.profile_picture.key, transformation: [{ width: 50, height: 50, crop: :limit }], class: "avatar" %>
               <% else %>
                 <%= image_tag "https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg?w=740&t=st=1719342054~exp=1719342654~hmac=7519b53e7f960eb52fc5f6ed5e729593d0a0828ad103e0e1f370e48c85b0ab53", class: "avatar", alt: "dropdown menu" %>
               <% end %>
             </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
