@@ -9,6 +9,11 @@
                         <%= cl_image_tag @casting.photo.key, height: 300, width: 400, crop: :fill if @casting.photo.attached? %>
                     </div>
                     <div class="description">
+                        <div class="producer-details">
+                          <div class="producer-image">
+                            <%= cl_image_tag @casting.producer.profile_picture.key, height: 50, width: 50, crop: :fill if @casting.producer.profile_picture.attached? %>
+                          </div>
+                        </div>
                         <h2><%= @casting.title %></h2>
                         <p><%= @casting.description %></p>
                         <div class="info-tags">
@@ -28,16 +33,11 @@
 
                             <% if current_user.producer? %>
                                 <div class="auditions-link">
-                                    <%= link_to "View All Auditions", casting_auditions_path(@casting), class: "button" %>
+                                    <%= link_to "View All Auditions", casting_auditions_path(@casting), class: "btn btn-primary" %>
                                 </div>
                             <% end %>
                           </div>
 
-                        </div>
-                        <div class="produer-details">
-                          <div class="producer-image">
-                            <%= cl_image_tag @casting.producer.profile_picture.key, height: 50, width: 50, crop: :fill if @casting.producer.profile_picture.attached? %>
-                          </div>
                         </div>
                 </div>
 

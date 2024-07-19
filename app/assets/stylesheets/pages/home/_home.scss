@@ -69,6 +69,21 @@
     background: #4D04C4;
   }
 
+  .Cards-title {
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    margin-bottom: auto;
+    padding-left: 20px;
+
+    h1 {
+      font-size: 3.1rem;
+      letter-spacing: -0.9px;
+      font-weight: 600;
+      color: ivory;
+    }
+  }
+
   .cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -95,6 +110,8 @@
     width: 45%;
     text-align: left;
     float: left;
+    margin-left: -12px;
+    border-radius: 6%;
 
     img {
       max-height: 240px;
@@ -115,6 +132,9 @@
   .card h2 {
     font-size: 1.5em;
     margin: 15px 0 10px;
+    font-weight: bolder;
+    line-height: 26px;
+    letter-spacing: -1.3px;
   }
 
   .card-info {
@@ -131,6 +151,7 @@
     font-size: 14px;
     color: #777;
     margin-bottom: 10px;
+    letter-spacing: -0.4px;
   }
 
   .card .details .icon {
@@ -138,9 +159,10 @@
   }
 
   .card p {
-    font-size: 14px;
+    font-size: 14.4px;
     color: #555;
     margin: 10px 0;
+    letter-spacing: -0.5px;
   }
 
   .card .due-date {
@@ -149,6 +171,7 @@
     display: flex;
     align-items: center;
     justify-content: right;
+    letter-spacing: -0.1px;
   }
 
   .card .due-date .icon {
