@@ -1,10 +1,16 @@
-<%= simple_form_for @dancer do |f| %>
-  <%= f.input :name %>
-  <%= f.input :age %>
-  <%= f.input :location %>
-  <%= f.input :bio %>
-  <%= f.input :dancing_styles %>
-  <%= f.input :profile_picture, as: :file, label: 'Profile Picture' %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.button :submit, 'Create Dancer Profile' %>
-<% end %>
+<div class='background'>
+  <div class='casting-form-container'>
+    <%= simple_form_for @dancer do |f| %>
+      <div class='form-group'>
+      <%= f.input :name %>
+      <%= f.input :age %>
+      <%= f.input :location %>
+      <%= f.input :bio %>
+      <%= f.input :dancing_styles %>
+      <%= f.input :profile_picture, as: :file, label: 'Profile Picture' %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.button :submit, 'Create Dancer Profile', class: 'btn btn-flat'  %>
+    </div>
+   <% end %>
+  </div>
+</div>
