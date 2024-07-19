@@ -1,6 +1,6 @@
 class CastingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_casting, only: [:show, :edit, :update, :destroy]
+  before_action :set_casting, only: %i[show edit update destroy]
 
   def index
     if current_user.producer

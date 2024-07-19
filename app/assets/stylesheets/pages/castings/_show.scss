@@ -5,12 +5,6 @@
   padding: 0;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f5f5f5;
-  line-height: 1.6;
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -76,11 +70,11 @@ body {
 }
 
 .apply-details .tag {
-  background-color: #0b0bff;
+  background-color: orange;
   color: #ffffff;
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-size: 0.9rem;
+  padding: 11px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
 }
 
 .job-description h2 {
@@ -109,17 +103,20 @@ body {
   font-size: 0.8rem;
 }
 
-.apply-details button {
-  background-color: #670BFF;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
+.applly-details button {
+  background-color: #7c5bb2;
   border-radius: 10px;
+  color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  display: inline-block;
+  font-size: 14px;
+  padding: 10px 20px;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.3s;
+  width: auto;
 }
 
-.apply-details button:hover {
+.applly-details button:hover {
   background-color: #4D04C4;
 }
 
