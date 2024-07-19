@@ -1,4 +1,3 @@
-/* Reset and basic styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -20,82 +19,51 @@
   border-radius: 10px;
 }
 
-.job-details {
+.full-width-card {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.job-image {
-  max-width: 100%;
-  border-radius: 10px;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.producer-image {
-  max-width: 100%;
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.card-left, .card-right {
+  flex: 1;
+  min-width: 50%;
 }
 
-.job-image img {
+.full-width-image {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 
-.job-description {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-
-  .description {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    .info-tags, .requirements, .apply-details {
-      margin-top: 10px;
-    }
-  }
+.card-info {
+  padding: 20px;
 }
 
-.apply-details {
-  display: flex;
-  gap: 10px;
-}
-
-.apply-details .tag {
-  background-color: orange;
-  color: #ffffff;
-  padding: 11px 10px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-}
-
-.job-description h2 {
+.card-info h2 {
   font-size: 2.5rem;
-  margin-bottom: 10px;
+  margin-top: 0;
   color: #333;
 }
 
-.job-description h3 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: #0b0bff;
-}
-
-.job-description p {
+.card-info p {
   line-height: 1.8;
   margin-bottom: 15px;
   color: #555;
 }
 
-.info-tags .tag {
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tag {
   background-color: #670BFF;
   color: #ffffff;
   padding: 5px 10px;
@@ -103,30 +71,47 @@
   font-size: 0.8rem;
 }
 
-.applly-details button {
-  background-color: #7c5bb2;
-  border-radius: 10px;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 14px;
-  padding: 10px 20px;
-  text-align: center;
-  transition: background-color 0.3s, transform 0.3s;
-  width: auto;
+.apply-details {
+  margin-top: 20px;
 }
 
-.applly-details button:hover {
-  background-color: #4D04C4;
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn:hover {
-  background: #670BFF;
-  color: white;
+  background-color: #0056b3;
 }
 
+.producer-card {
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
 
-/* Interested section */
+.producer-card h2 {
+  margin-top: 10px;
+  color: #333;
+  box-shadow: #333;
+}
+
+.producer-image img {
+  border-radius: 50%;
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
 .interested {
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -143,21 +128,21 @@
 
 .cards {
   display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
 .card {
   background-color: #fff;
-    width: 250px;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    text-decoration: none;
+  width: 250px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  text-decoration: none;
 }
 
 .card:hover {
@@ -201,12 +186,14 @@
   color: #777;
   text-decoration: none;
 }
+
 .card p {
   font-size: 14px;
   color: #555;
   margin: 10px 0;
   text-decoration: none;
 }
+
 .card .due-date {
   font-size: 12px;
   text-align: right;
@@ -216,4 +203,17 @@
 
 .card a {
   text-decoration: none;
+}
+
+.interested .card {
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+  margin-right: 20px;
+}
+
+.producer-bio {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 10px;
 }
