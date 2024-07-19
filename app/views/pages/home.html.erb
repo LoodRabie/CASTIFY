@@ -1,14 +1,20 @@
-<head>
-  <link rel="stylesheet" href="home/_home.scss">
-</head>
-<body>
   <div class="home-page">
     <div class="banner">
       <div class="container">
         <h1>Castify</h1>
         <p>Find your next gig</p>
 
-        <%= link_to "Apply now", castings_path, class: "btn" %>
+        <%#= link_to "Apply now", castings_path, class: "btn" %>
+
+        <% if current_user %>
+          <% if current_user.producer %>
+            <%= link_to "Create a Casting", new_producer_casting_path(current_user.producer), class: "btn" %>
+          <% else %>
+            <%= link_to "Apply now", castings_path, class: "btn" %>
+          <% end %>
+        <% else %>
+          <%= link_to "Apply now", castings_path, class: "btn" %>
+        <% end %>
 
       </div>
     </div>
@@ -27,11 +33,10 @@
         <% @dancers.each do |dancer| %>
           <div class="card">
             <%= link_to dancer_path(dancer) do %>
-
                 <% if dancer.profile_picture.attached? %>
                   <%= cl_image_tag dancer.profile_picture.key, class: 'card-image' %>
                 <% end %>
-              </div>
+
               <div class="card-info">
               <h2><%= dancer.name %></h2>
               <div class="details">
@@ -42,7 +47,8 @@
             <% end %>
           </div>
         <% end %>
-      </div>
+          </div>
+
     <% else current_user && current_user.dancer %>
       <div class="cards">
         <% @castings.each do |casting| %>
@@ -61,12 +67,13 @@
               </div>
               <p><%= casting.description %></p>
               <div class="due-date"><i class="fas fa-calendar-alt icon"></i><%= casting.deadline %></div>
+
               </div>
             <% end %>
-          </div>
-        <% end %>
+
       </div>
+        <% end %>
+    </div>
     <% end %>
 
-  </div>
-</body>
+ </div>

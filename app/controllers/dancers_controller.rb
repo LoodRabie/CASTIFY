@@ -1,5 +1,5 @@
 class DancersController < ApplicationController
-  before_action :set_dancer, only: [:show, :edit, :update, :destroy]
+  before_action :set_dancer, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   def new

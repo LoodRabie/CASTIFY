@@ -7,10 +7,10 @@ class Dancer < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_name_and_age_and_location_and_bio_and_dancing_styles,
-    against: [ :name, :age, :location, :bio, :dancing_styles ],
-    using: {
-      tsearch: { prefix: true }
-    }
+                  against: %i[name age location bio dancing_styles],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   validates :name, presence: true
   validates :age, presence: true, numericality: { only_integer: true, greater_than: 0 }
