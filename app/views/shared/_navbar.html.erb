@@ -18,7 +18,7 @@
 
           <% if current_user.role == "dancer" %>
             <li class="nav-item active">
-              <% if current_user.dancer %>
+              <% if current_user.dancer && current_user.dancer.id %>
                 <%= link_to "Profile", dancer_path(current_user.dancer), class: "nav-link" %>
               <% else %>
                 <%= link_to "Create Dancer Profile", new_dancer_path, class: "btn btn-flat" %>
@@ -35,7 +35,7 @@
 
           <% if current_user.role == "producer" %>
             <li class="nav-item active">
-              <% if current_user.producer %>
+              <% if current_user.producer && current_user.producer.id %>
                 <%= link_to "Profile", producer_path(current_user.producer.id), class: "nav-link" %>
               <% else %>
                 <%= link_to "Create Producer Profile", new_producer_path, class: "btn btn-flat" %>
