@@ -2,79 +2,71 @@
   <link rel="stylesheet" href="castings/_show.scss">
 </head>
 <body>
-  <div class="container">
-    <section class="main-content">
-      <div class="full-width-card">
-        <div class="card-left">
-          <div class="job-image">
-            <%= cl_image_tag @casting.photo.key, class: 'full-width-image' if @casting.photo.attached? %>
-          </div>
-        </div>
-        <div class="card-right">
-          <div class="card-info">
-            <h2><%= @casting.title %></h2>
-            <p><%= @casting.description %></p>
-            <div class="details">
-              <span class="tag"><%= @casting.dancing_style %></span>
-              <span class="tag">📅 <%= @casting.deadline.strftime("%d %B, %Y") %></span>
-              <span class="tag">📍 <%= @casting.location %></span>
-            </div>
-            <div class="apply-details">
-              <% if current_user.dancer %>
-                <div>
-                  <%= link_to "Apply now", new_casting_audition_path(@casting), class: "btn" %>
-                </div>
-              <% end %>
-              <% if current_user.producer? %>
-                <div class="auditions-link">
-                  <%= link_to "View All Auditions", casting_auditions_path(@casting), class: "btn" %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="producer-card">
-            <div class="card-info">
-              <h4>Producer</h4>
-              <div class="producer-image">
-                <%= cl_image_tag @casting.producer.profile_picture.key, height: 50, width: 50, crop: :fill if @casting.producer.profile_picture.attached? %>
-              </div>
-              <div class="details">
-              <h5><%= @casting.producer.name %></h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="container">
+        <section class="main-content">
+                <div class="job-description">
+                    <div class="job-image">
+                        <%= cl_image_tag @casting.photo.key, height: 300, width: 400, crop: :fill if @casting.photo.attached? %>
+                    </div>
+                    <div class="description">
+                        <div class="producer-details">
+                          <div class="producer-image">
+                            <%= cl_image_tag @casting.producer.profile_picture.key, height: 50, width: 50, crop: :fill if @casting.producer.profile_picture.attached? %>
+                          </div>
+                        </div>
+                        <h2><%= @casting.title %></h2>
+                        <p><%= @casting.description %></p>
+                        <div class="info-tags">
+                            <span class="tag"><%= @casting.dancing_style %></span>
+                        </div>
+                        <div class="apply-details">
+                          <span class="tag">📅  <%= @casting.deadline.strftime("%d %B, %Y") %></span>
+                          <span class="tag">📍  <%= @casting.location %></span>
+                        </div>
 
-    <% if current_user.dancer? %>
-      <section class="interested">
-        <h3>You might also be interested in these</h3>
-        <% if @same_style_castings.any? %>
-          <% @same_style_castings.each do |same_style_casting| %>
-            <div class="card">
-              <%= link_to casting_path(same_style_casting) do %>
-                <div class="image-placeholder">
-                  <% if same_style_casting.photo.attached? %>
-                    <%= cl_image_tag same_style_casting.photo.key, class: 'card-image' %>
-                  <% end %>
+                          <div class="app">
+                            <% if current_user.dancer %>
+                            <div>
+                              <%= link_to "Apply now", new_casting_audition_path(@casting), class: "btn btn-primary" %>
+                            </div>
+                            <% end %>
+
+                            <% if current_user.producer? %>
+                                <div class="auditions-link">
+                                    <%= link_to "View All Auditions", casting_auditions_path(@casting), class: "btn btn-primary" %>
+                                </div>
+                            <% end %>
+                          </div>
+
+                        </div>
                 </div>
-                <div class="card-info">
-                  <h2><%= same_style_casting.title %></h2>
-                  <div class="details">
-                    <span><%= same_style_casting.location %></span>
-                    <span><%= same_style_casting.dancing_style %></span>
-                  </div>
-                  <p><%= same_style_casting.description %></p>
-                  <div class="due-date"><%= same_style_casting.deadline %></div>
-                </div>
-              <% end %>
+
             </div>
-          <% end %>
-        <% else %>
-          <p>No similar castings found.</p>
-        <% end %>
-      </section>
-    <% end %>
-  </div>
+        </section>
+        <section class="interested">
+            <h3>You might also be interested in these</h3>
+            <% if @same_style_castings.any? %>
+                <% @same_style_castings.each do |same_style_casting| %>
+                  <div class="card">
+                    <%= link_to casting_path(same_style_casting) do %>
+                      <div class="image-placeholder">
+                        <% if same_style_casting.photo.attached? %>
+                          <%= cl_image_tag same_style_casting.photo.key, class: 'card-image' %>
+                        <% end %>
+                      </div>
+                    <h2><%= same_style_casting.title %></h2>
+                        <div class="details">
+                          <span><%= same_style_casting.location %></span>
+                          <span><%= same_style_casting.dancing_style %></span>
+                        </div>
+                        <p><%= same_style_casting.description %></p>
+                      <div class="due-date"><%= same_style_casting.deadline %></div>
+                    <% end %>
+                  </div>
+                <% end %>
+            <% else %>
+              <p>No similar castings found.</p>
+            <% end %>
+        </section>
+    </div>
 </body>

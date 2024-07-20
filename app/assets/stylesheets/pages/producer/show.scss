@@ -10,7 +10,7 @@
   }
 
   .producer-info {
-    max-width: 800px; /* Increased max-width */
+    max-width: 480px; /* Increased max-width */
     padding: 40px; /* Increased padding */
     background-color: #fff; /* White background for containers */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
@@ -19,12 +19,14 @@
 
   img, svg {
     vertical-align: middle;
-    border-radius: 5%;
+    border-radius: 0%;
 }
 
   .container.producer-info {
     padding: 30px;
   }
+
+  .container
 
   .container p {
     margin-bottom: 15px;
