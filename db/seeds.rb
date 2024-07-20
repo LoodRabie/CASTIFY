@@ -112,3 +112,5 @@ puts "#{Producer.count} producers created"
 puts "#{Dancer.count} dancers created"
 puts "#{Casting.count} castings created"
 puts "Seed data created successfully!"
+
+# final day of bootcamp
