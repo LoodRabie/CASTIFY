@@ -1,7 +1,7 @@
 <div class="producer-show-page">
   <div class="background">
     <div class="producer-info">
-     <%= cl_image_tag @producer.profile_picture.key, height: 300, width: 400, crop: :fill if @producer.profile_picture.attached? %>
+      <%= cl_image_tag @producer.profile_picture.key, height: 300, width: 400, crop: :fill if @producer.profile_picture.attached? %>
       <p><strong>Producer Name:</strong> <%= @producer.name %></p>
       <p><strong>Producer Bio:</strong> <%= @producer.bio %></p>
       <p><strong>Producer Email:</strong> <%= current_user.email %></p>
@@ -21,7 +21,7 @@
     <ul>
       <% @castings.each do |casting| %>
         <li>
-          <%= link_to casting.title, casting_path(casting) %>
+          <%= link_to casting.title, casting_path(casting), class: "btn" %>
           <p><%= casting.description %></p>
         </li>
       <% end %>
@@ -30,4 +30,3 @@
     <p>No castings available.</p>
   <% end %>
 </div>
-</body>
