@@ -107,22 +107,8 @@ casting5 = Casting.create!(
 )
 casting5.photo.attach(io: URI.open('https://images.pexels.com/photos/12312/pexels-photo-12312.jpeg?auto=compress&cs=tinysrgb&w=600'), filename: 'salsa.jpg')
 
-# Create auditions
-puts "Creating auditions..."
-Audition.create!(status: "pending", date: Date.new(2023, 12, 20), casting: casting1)
-Audition.create!(status: "accepted", date: Date.new(2023, 12, 21), casting: casting1)
-Audition.create!(status: "pending", date: Date.new(2024, 1, 10), casting: casting2)
-Audition.create!(status: "accepted", date: Date.new(2024, 1, 11), casting: casting2)
-Audition.create!(status: "pending", date: Date.new(2024, 2, 5), casting: casting3)
-Audition.create!(status: "accepted", date: Date.new(2024, 2, 6), casting: casting3)
-Audition.create!(status: "pending", date: Date.new(2024, 3, 15), casting: casting4)
-Audition.create!(status: "accepted", date: Date.new(2024, 3, 16), casting: casting4)
-Audition.create!(status: "pending", date: Date.new(2024, 4, 20), casting: casting5)
-Audition.create!(status: "accepted", date: Date.new(2024, 4, 21), casting: casting5)
-
 puts "#{User.count} users created"
 puts "#{Producer.count} producers created"
 puts "#{Dancer.count} dancers created"
 puts "#{Casting.count} castings created"
-puts "#{Audition.count} auditions created"
 puts "Seed data created successfully!"
