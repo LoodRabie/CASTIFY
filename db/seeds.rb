@@ -1,8 +1,6 @@
 require 'open-uri'
 
 puts "Destroying existing data..."
-Audition.destroy_all
-DancerAudition.destroy_all
 Casting.destroy_all
 Dancer.destroy_all
 Producer.destroy_all
@@ -40,19 +38,19 @@ producer5.profile_picture.attach(io: URI.open('https://randomuser.me/api/portrai
 
 # Create dancers with profile pictures
 puts "Creating dancers..."
-dancer1 = Dancer.create!(name: "Michael Jackson", age: 50, location: "Los Angeles, CA", bio: "King of Pop and legendary dancer.", user: user6)
+dancer1 = Dancer.create!(name: "Michael Jackson", age: 50, location: "Los Angeles, CA", bio: "King of Pop and legendary dancer.", dancing_styles: "Hip Hop", user: user6)
 dancer1.profile_picture.attach(io: URI.open('https://images.pexels.com/photos/1139743/pexels-photo-1139743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'), filename: 'michael.jpg')
 
-dancer2 = Dancer.create!(name: "Beyonce Knowles", age: 39, location: "Houston, TX", bio: "Queen Bey and an incredible performer.", user: user7)
+dancer2 = Dancer.create!(name: "Beyonce Knowles", age: 39, location: "Houston, TX", bio: "Queen Bey and an incredible performer.", dancing_styles: "Voguing", user: user7)
 dancer2.profile_picture.attach(io: URI.open('https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'), filename: 'beyonce.jpg')
 
-dancer3 = Dancer.create!(name: "Fred Astaire", age: 88, location: "Omaha, NE", bio: "Legendary dancer and actor from the golden age of Hollywood.", user: user8)
+dancer3 = Dancer.create!(name: "Fred Astaire", age: 88, location: "Omaha, NE", bio: "Legendary dancer and actor from the golden age of Hollywood.", dancing_styles: "Ballet", user: user8)
 dancer3.profile_picture.attach(io: URI.open('https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg'), filename: 'fred.jpg')
 
-dancer4 = Dancer.create!(name: "Ginger Rogers", age: 83, location: "Independence, MO", bio: "Iconic dancer and actress, partner of Fred Astaire.", user: user9)
+dancer4 = Dancer.create!(name: "Ginger Rogers", age: 83, location: "Independence, MO", bio: "Iconic dancer and actress, partner of Fred Astaire.", dancing_styles: "African Dance", user: user9)
 dancer4.profile_picture.attach(io: URI.open('https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=600'), filename: 'ginger.jpg')
 
-dancer5 = Dancer.create!(name: "Sam Graham", age: 96, location: "Pittsburgh, PA", bio: "Pioneer of modern dance and influential choreographer.", user: user10)
+dancer5 = Dancer.create!(name: "Sam Graham", age: 96, location: "Pittsburgh, PA", bio: "Pioneer of modern dance and influential choreographer.", dancing_styles: "Cultural Dance", user: user10)
 dancer5.profile_picture.attach(io: URI.open('https://images.pexels.com/photos/2770600/pexels-photo-2770600.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'), filename: 'martha.jpg')
 
 # Create castings with specific details
@@ -107,22 +105,10 @@ casting5 = Casting.create!(
 )
 casting5.photo.attach(io: URI.open('https://images.pexels.com/photos/12312/pexels-photo-12312.jpeg?auto=compress&cs=tinysrgb&w=600'), filename: 'salsa.jpg')
 
-# Create auditions
-puts "Creating auditions..."
-Audition.create!(status: "pending", date: Date.new(2023, 12, 20), casting: casting1)
-Audition.create!(status: "accepted", date: Date.new(2023, 12, 21), casting: casting1)
-Audition.create!(status: "pending", date: Date.new(2024, 1, 10), casting: casting2)
-Audition.create!(status: "accepted", date: Date.new(2024, 1, 11), casting: casting2)
-Audition.create!(status: "pending", date: Date.new(2024, 2, 5), casting: casting3)
-Audition.create!(status: "accepted", date: Date.new(2024, 2, 6), casting: casting3)
-Audition.create!(status: "pending", date: Date.new(2024, 3, 15), casting: casting4)
-Audition.create!(status: "accepted", date: Date.new(2024, 3, 16), casting: casting4)
-Audition.create!(status: "pending", date: Date.new(2024, 4, 20), casting: casting5)
-Audition.create!(status: "accepted", date: Date.new(2024, 4, 21), casting: casting5)
-
 puts "#{User.count} users created"
 puts "#{Producer.count} producers created"
 puts "#{Dancer.count} dancers created"
 puts "#{Casting.count} castings created"
-puts "#{Audition.count} auditions created"
 puts "Seed data created successfully!"
+
+# final day of bootcamp
