@@ -1,16 +1,14 @@
+<div class='background'>
+  <div class='casting-form-container'>
 <%= simple_form_for [@casting, @audition] do |f| %>
-
+<div class='form-group'>
   <% if @casting.video.attached? %>
     <h3>Instructional Video</h3>
     <%= video_tag url_for(@casting.video), height: 300, width: 400, controls: true %>
   <% end %>
-
-  <div class="field">
     <%= f.input :video, as: :file %>
-  </div>
-
-  <div class="actions">
     <%= f.button :submit, "Submit Audition" %>
   </div>
-<% end %>
-
+   <% end %>
+  </div>
+</div>
