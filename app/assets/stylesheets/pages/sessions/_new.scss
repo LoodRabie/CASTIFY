@@ -5,22 +5,51 @@
   justify-content: center;
   align-items: center;
   overflow: scroll;
+  flex-direction: column;
+  flex-shrink: 0;
+  vertical-align: baseline;
 }
 
-.casting-form-container {
+h2, .h2 {
+  font-size: calc(1.325rem + 0.9vw);
+  color: #e7dff5;
+}
+
+.sessions-form-container {
   width: 550px;
   padding: 6px;
   background-color: rgba(0, 0, 0, 0.125);
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 0 10px;
+  padding: 10px 0;
 }
 
-.form-group {
-  margin-top: 30px;
-  margin-bottom: 15px;
+.links-container {
+  width: 550px;
+  padding: 6px;
+  background-color: rgba(0, 0, 0, 0.125);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  vertical-align: baseline;
+  margin: 0 0 10px;
+  padding: 10px 0;
+}
+
+.sign-up-form-group {
   width: 100%;
   padding: 10px;
   font-size: 16px;
+}
+
+.form-text {
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #e7dff5;
 }
 
 .form-control.is-valid {
@@ -45,6 +74,15 @@
   color: purple;
 }
 
+.form-check-input:checked {
+  background-color: #7c5bb2;
+  border-color: #4d04c4;
+}
+
+label.form-check-label.boolean.optional {
+  color: #e7dff5;
+}
+
 .btn {
   background-color: #7c5bb2;
   border-radius: 4px;
@@ -63,9 +101,24 @@
 
   &.btn-flat {
     width: 100%;
+    margin: 0 0 10px;
+    padding: 10px 0;
 
     &:hover {
       background-color: #4D04C4;
+    }
+  }
+
+  &.btn-prim {
+    width: 100%;
+    margin: 0 0 10px;
+    padding: 10px 0;
+    color:#4D04C4;
+    background-color: #ffffff;
+
+    &:hover {
+      background-color: #4D04C4;
+      color: #ffffff;
     }
   }
 }

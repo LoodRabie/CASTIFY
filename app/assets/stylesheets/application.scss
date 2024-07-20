@@ -9,6 +9,7 @@
 
 // Your CSS partials
 @import "components/index";
+@import "components/footer";
 @import "pages/home/index";
 @import "pages/castings/show";
 @import "pages/home/home";
@@ -16,4 +17,6 @@
 @import "pages/producer/edit";
 @import "pages/dancer/show";
 @import "pages/dancer/edit";
-@import "pages/castings/new"
+@import "pages/castings/new";
+@import "pages/registrations/new";
+@import "pages/sessions/new";

@@ -1,6 +1,8 @@
 <h1>Edit Cassting</h1>
-<div class = "container">
+<div class='background'>
+  <div class='dancer-form-container'>
   <%= simple_form_for [@producer, @casting] do |f| %>
+  <div class='form-group'>
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :dancing_style %>
@@ -8,5 +10,7 @@
     <%= f.input :location %>
     <%= f.input :photo, as: :file %>
     <%= f.button :submit, 'Update Casting', class: 'btn btn-primary' %>
-  <% end %>
+     </div>
+      <% end %>
+  </div>
 </div>
