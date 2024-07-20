@@ -21,7 +21,7 @@
     <div class="search-bar">
       <%= form_with url: root_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search..." %>
-        <%= submit_tag "Search", class: "btn btn-flat" %>
+        <%= submit_tag "Search", class: "btn btn-search" %>
       <% end %>
     </div>
   </div>
@@ -30,12 +30,12 @@
       <div class="Cards-title">
         <% if current_user %>
           <% if current_user.producer %>
-            <h1>Dancers</h1>
+            <h3>Dancers</h3>
           <% else %>
-            <h1>Available Castings</h1>
+            <h3>Available Castings</h3>
           <% end %>
         <% else %>
-          <h1>Available Castings</h1>
+          <h3>Available Castings</h3>
         <% end %>
       </div>
   </div>
@@ -75,7 +75,7 @@
               <h2><%= casting.title %></h2>
               <div class="details">
                 <span><i class="fas fa-map-marker-alt icon"></i><%= casting.location %></span>
-                <span><i class="fa-solid fa-person-running">  </i><%= casting.dancing_style %></span>
+                <span><i class="fa-solid fa-person-running"></i> <%= casting.dancing_style %></span>
               </div>
               <p><%= casting.description %></p>
 
